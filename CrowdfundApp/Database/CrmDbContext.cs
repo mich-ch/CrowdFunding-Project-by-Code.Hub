@@ -13,6 +13,7 @@ namespace CrowdfundApp.Database
         public DbSet<Funding> Fundings { get; set; }
         public DbSet<BackerProject> BackerProjects { get; set; }
         public DbSet<Project> Projects { get; set; }
+        public DbSet<Multimedia> Multimedia { get; set; }
 
 
         private readonly string connectionString =

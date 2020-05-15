@@ -2,20 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CrowdfundApp.Models
+namespace CrowdfundApp.Options
 {
-    public class Project
+    public class ProjectOption
     {
-        public int Id { get; set; }
+
         public string Title { get; set; }
         public string Description { get; set; }
-        public List<Multimedia> Multimedia { get; set; }
         public string StatusUpdate { get; set; }
-        public List<Funding> FundingChoices { get; set; }
         public decimal TotalFundings { get; set; }
         public decimal Goal { get; set; }
         public bool Active { get; set; }
-
 
     }
 }

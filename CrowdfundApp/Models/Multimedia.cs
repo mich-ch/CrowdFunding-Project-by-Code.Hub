@@ -4,10 +4,11 @@ using System.Text;
 
 namespace CrowdfundApp.Models
 {
-    public class BackerProject
+    public class Multimedia
     {
         public int Id { get; set; }
-        public Backer Backer { get; set; }
-        public Project Project { get; set; }
+        public string Path { get; set; }
+        public bool IsPhoto { get; set; }
+
     }
 }
