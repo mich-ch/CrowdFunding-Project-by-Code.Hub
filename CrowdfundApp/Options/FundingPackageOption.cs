@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CrowdfundApp.Models
+namespace CrowdfundApp.Options
 {
-    public class Funding
+    public class FundingPackageOption
     {
-        public int Id { get; set; }
         public decimal Price { get; set; }
         public string Reward { get; set; }
     }

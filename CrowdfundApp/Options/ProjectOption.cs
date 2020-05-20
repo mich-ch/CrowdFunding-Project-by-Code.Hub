@@ -6,7 +6,7 @@ namespace CrowdfundApp.Options
 {
     public class ProjectOption
     {
-
+        public int ProjectCreatorId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string StatusUpdate { get; set; }

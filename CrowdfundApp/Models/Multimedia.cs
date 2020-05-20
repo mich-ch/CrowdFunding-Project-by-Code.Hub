@@ -9,6 +9,7 @@ namespace CrowdfundApp.Models
         public int Id { get; set; }
         public string Path { get; set; }
         public bool IsPhoto { get; set; }
+        public bool IsVideo { get; set; }
 
     }
 }
