@@ -12,7 +12,6 @@ namespace CrowdfundApp.Services
         List<Project> TextProjectsSearch(string projectName);
         List<Project> ShowFundingProjectsByBacker(int backerId);
         void Fund(int projectId, int fundingPackageId);
-        List<FundingPackage> SelectProjectToFund(int projectId);
-        string SelectFundingPackage(int fundingPackageId);
+        
     }
 }

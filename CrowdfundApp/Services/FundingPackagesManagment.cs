@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using CrowdfundApp.Models;
 
 namespace CrowdfundApp.Services
 {
@@ -16,6 +17,8 @@ namespace CrowdfundApp.Services
             db = _db;
         }
 
+        public FundingPackage CreateFundingPackage(FundingPackageOption fundingPackageOption) { return (null); }
+        public FundingPackage FindFundingPackage(int FundingsPackagesId) { return (null); }
 
     }
 }
