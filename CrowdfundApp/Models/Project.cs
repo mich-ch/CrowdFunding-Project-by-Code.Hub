@@ -15,7 +15,9 @@ namespace CrowdfundApp.Models
         public List<FundingPackage> RewardPackages { get; set; }
         public decimal TotalFundings { get; set; }
         public decimal Goal { get; set; }
+        public string Category { get; set; }
         public bool Active { get; set; }
+        public List<BackerProject> BackerProjects { get; set; }
 
 
     }
