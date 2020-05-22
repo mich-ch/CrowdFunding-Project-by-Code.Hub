@@ -19,9 +19,9 @@ namespace CrowdfundApp.Services
 
         }
 
-             public Project CreateProject(ProjectOption projectOption) { return (null); }
-
-             public List<FundingPackage> ShowFundingPackages() { return (null); }
+        public Project CreateProject(ProjectOption projectOption) { return (null); }
+        public Project FindProject(int projectId){ return (null);}
+        public List<FundingPackage> ShowFundingPackages() { return (null); }
 
 
         

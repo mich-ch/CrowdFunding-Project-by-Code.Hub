@@ -17,22 +17,8 @@ namespace CrowdfundApp.Services
             db = _db;
         }
 
-        //Create new FundingPackage
-        public FundingPackage CreateFundingPackage(FundingPackageOption fundingPackageOption)
-        {
-            FundingPackage fundingPackage = new FundingPackage
-            {
-                Price = fundingPackageOption.Price,
-                Reward = fundingPackageOption.Reward
-            };
-
-
-            db.FundingPackages.Add(fundingPackage);
-            db.SaveChanges();
-
-            return fundingPackage;
-        }
-
+        public FundingPackage CreateFundingPackage(FundingPackageOption fundingPackageOption) { return (null); }
+        public FundingPackage FindFundingPackage(int FundingsPackageId) { return (null); }
 
     }
 }

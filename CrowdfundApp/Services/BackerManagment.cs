@@ -18,9 +18,10 @@ namespace CrowdfundApp.Services
         }
 
         public Backer CreateBacker(BackerOption backerOption) { return (null); }
+        public Backer FindBacker(int backerId) { return (null); }
         public List<Project> TextProjectsSearch(string projectName) { return (null); }
         public List<Project> ShowFundingProjectsByBacker(int backerId) { return (null); }
-        public void Fund(int projectId, int fundingPackageId) { }
+        public void Fund(int projectId, int fundingPackageId) { return null; }
 
     }
 }
