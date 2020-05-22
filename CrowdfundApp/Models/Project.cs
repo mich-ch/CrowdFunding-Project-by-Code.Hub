@@ -12,7 +12,7 @@ namespace CrowdfundApp.Models
         public string Description { get; set; }
         public List<Multimedia> Multimedia { get; set; }
         public string StatusUpdate { get; set; }
-        public List<FundingPackage> RewardPackages { get; set; }
+        public List<FundingPackage> FundingPackages { get; set; }
         public decimal TotalFundings { get; set; }
         public decimal Goal { get; set; }
         public string Category { get; set; }

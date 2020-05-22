@@ -8,11 +8,11 @@ using CrowdfundApp.Models;
 
 namespace CrowdfundApp.Services
 {
-    public class FundingPackagesManagment: IFundingPackagesManager
+    public class FundingPackageManagment: IFundingPackageManager
     {
         private CrmDbContext db;
 
-        public FundingPackagesManagment(CrmDbContext _db)
+        public FundingPackageManagment(CrmDbContext _db)
         {
             db = _db;
         }
@@ -23,7 +23,7 @@ namespace CrowdfundApp.Services
             FundingPackage fundingPackage = new FundingPackage
             {
                 Price = fundingPackageOption.Price,
-                Reward = fundingPackageOption.Reward,
+                Reward = fundingPackageOption.Reward
             };
 
 
@@ -33,10 +33,6 @@ namespace CrowdfundApp.Services
             return fundingPackage;
         }
 
-        //Create FundingPackage by FundingsPackagesId
-        public FundingPackage FindFundingPackage(int FundingsPackagesId)
-        {
-            return db.FundingPackages.Find(FundingsPackagesId);
-        }
+
     }
 }
