@@ -41,7 +41,7 @@ namespace CrowdfundApp.Services
         public List<Project> ShowProjectsByCreator(int projectCreatorId) 
         { 
             return db.Projects
-                .Where(projectCreator => projectCreator.Id == projectCreatorId)
+                .Where(project => project.ProjectCreatorId == projectCreatorId)
                 .ToList();
         }
 
@@ -62,7 +62,7 @@ namespace CrowdfundApp.Services
         public bool AddFundingPackage(int projectId, FundingPackageOption fundingPackageOption) 
         { 
             Project project = db.Projects.FindProject(projectId);
-            FundingPackageManager fundingPackageManager = new FundingPackagesManagment(db);
+            FundingPackageManagment fundingPackageManager = new FundingPackageManagment(db); //help
             FundingPackage fundingPackage = fundingPackageManager.CreateFundingPackage(fundingPackageOption);
 
             project.FundingPackages.Add(fundingPackage);
