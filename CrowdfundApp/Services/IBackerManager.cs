@@ -9,6 +9,7 @@ namespace CrowdfundApp.Services
     public interface IBackerManager
     {
         Backer CreateBacker(BackerOption backerOption);
+        Backer FindBacker(int backerId);
         List<Project> TextProjectsSearch(string projectName);
         List<Project> ShowFundingProjectsByBacker(int backerId);
         List<Project> ShowAllProjects();
