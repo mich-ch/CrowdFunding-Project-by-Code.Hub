@@ -12,6 +12,7 @@ namespace CrowdfundApp.Options
         public string StatusUpdate { get; set; }
         public decimal TotalFundings { get; set; }
         public decimal Goal { get; set; }
+        public string Category { get; set; }
         public bool Active { get; set; }
 
     }

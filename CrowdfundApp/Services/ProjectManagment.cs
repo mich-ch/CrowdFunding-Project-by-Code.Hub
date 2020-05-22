@@ -19,11 +19,29 @@ namespace CrowdfundApp.Services
 
         }
 
-        public Project CreateProject(ProjectOption projectOption) { return (null); }
-        public Project FindProject(int projectId){ return (null);}
-        public List<FundingPackage> ShowFundingPackages() { return (null); }
+        public Project CreateProject(ProjectOption projectOption)
+        {
+            Project project = new Project
+            {
+                ProjectCreatorId = projectOption.ProjectCreatorId,
+                Title = projectOption.Title,
+                Description = projectOption.Description,
+                StatusUpdate = projectOption.StatusUpdate,
+                TotalFundings = projectOption.TotalFundings,
+                Goal = projectOption.Goal,
+                Category = projectOption.Category,
+                Active = true
+            };
+            db.Projects.Add(project);
+            db.SaveChanges();
+            return project;
+        }
+        public List<FundingPackage> ShowFundingPackages()
+        {
+            return db.FundingPackages.ToList();
+        }
 
 
-        
+
     }
 }
