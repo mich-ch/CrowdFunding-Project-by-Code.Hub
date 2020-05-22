@@ -17,8 +17,26 @@ namespace CrowdfundApp.Services
             db = _db;
         }
 
-        public FundingPackage CreateFundingPackage(FundingPackageOption fundingPackageOption) { return (null); }
-        public FundingPackage FindFundingPackage(int FundingsPackagesId) { return (null); }
+        //Create new FundingPackage
+        public FundingPackage CreateFundingPackage(FundingPackageOption fundingPackageOption)
+        {
+            FundingPackage fundingPackage = new FundingPackage
+            {
+                Price = fundingPackageOption.Price,
+                Reward = fundingPackageOption.Reward,
+            };
 
+
+            db.FundingPackages.Add(fundingPackage);
+            db.SaveChanges();
+
+            return fundingPackage;
+        }
+
+        //Create FundingPackage by FundingsPackagesId
+        public FundingPackage FindFundingPackage(int FundingsPackagesId)
+        {
+            return db.FundingPackages.Find(FundingsPackagesId);
+        }
     }
 }
