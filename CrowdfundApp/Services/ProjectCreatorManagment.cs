@@ -22,7 +22,7 @@ namespace CrowdfundApp.Services
         public List<Project> ShowProjectsByCreator(int projectCreatorId) { return (null); }
         public List<Project> ShowFundingProjectsByCreator(int projectCreatorId) { return (null); }
         public string PostStatusUpdate(int projectId) { return (null); }
-        public bool AddFundingPackage(int projectId, FundingPackage funding) { return false; }
+        public bool AddFundingPackage(int projectId, FundingPackageOption funding) { return false; }
 
 
     }

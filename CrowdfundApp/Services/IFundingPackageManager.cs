@@ -7,7 +7,7 @@ using System.Text;
 
 namespace CrowdfundApp.Services
 {
-    public interface IFundingPackagesManager
+    public interface IFundingPackageManager
     {
         FundingPackage CreateFundingPackage(FundingPackageOption fundingPackageOption);
         FundingPackage FindFundingPackage(int FundingsPackagesId);

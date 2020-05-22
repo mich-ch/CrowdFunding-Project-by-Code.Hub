@@ -8,11 +8,11 @@ using CrowdfundApp.Models;
 
 namespace CrowdfundApp.Services
 {
-    public class FundingPackagesManagment: IFundingPackagesManager
+    public class FundingPackageManagment: IFundingPackageManager
     {
         private CrmDbContext db;
 
-        public FundingPackagesManagment(CrmDbContext _db)
+        public FundingPackageManagment(CrmDbContext _db)
         {
             db = _db;
         }
