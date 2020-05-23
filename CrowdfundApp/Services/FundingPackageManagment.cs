@@ -22,7 +22,8 @@ namespace CrowdfundApp.Services
             FundingPackage fundingPackage = new FundingPackage
             {
                 Price = fundingPackageOption.Price,
-                Reward = fundingPackageOption.Reward
+                Reward = fundingPackageOption.Reward,
+                ProjectId = fundingPackageOption.ProjectId
             };
 
 

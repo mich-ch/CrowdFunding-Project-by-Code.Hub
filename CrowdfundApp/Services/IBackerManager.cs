@@ -10,11 +10,11 @@ namespace CrowdfundApp.Services
     {
         Backer CreateBacker(BackerOption backerOption);
         List<Project> TextProjectsSearch(string projectTitle);
-        List<BackerProject> ShowFundingProjectsByBacker(int backerId);
+        List<BackerFundingPackage> ShowFundingProjectsByBacker(int backerId);
         List<Project> ShowAllProjects();
         List<Project> ShowProjectsByCategory(string category);
         List<Project> ShowTrendsProjects();
-        void Fund(int projectId, int fundingPackageId); 
+        void Fund(int projectId, int fundingPackageId, int backerId); 
 
     }
 }

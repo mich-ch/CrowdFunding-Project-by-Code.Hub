@@ -4,9 +4,9 @@ using System.Text;
 
 namespace CrowdfundApp.Options
 {
-    public class BackerProjectOption
+    public class BackerFundingPackagetOption
     {
         public int BackerId { get; set; }
-        public int ProjectId { get; set; }
+        public int FundingPackageId { get; set; }
     }
 }

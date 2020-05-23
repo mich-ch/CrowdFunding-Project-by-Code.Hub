@@ -4,10 +4,11 @@ using System.Text;
 
 namespace CrowdfundApp.Models
 {
-    public class BackerProject
+    public class BackerFundingPackage 
     {
         public int Id { get; set; }
         public Backer Backer { get; set; }
-        public Project Project { get; set; }
+        public FundingPackage FundingPackage { get; set; }
+
     }
 }

@@ -38,13 +38,10 @@ namespace CrowdfundApp.Services
                      .ToList();
         }
 
-        public List<BackerProject> ShowFundingProjectsByBacker(int backerId)
+        public List<BackerFundingPackage> ShowFundingProjectsByBacker(int backerId)
         {
             Backer backer = db.Backers.Find(backerId);
-            return backer.BackerProjects.ToList();
-            //return db.BackerProjects
-            //         .Where(backerProject => backerProject.Backer == backer)
-            //         .ToList();
+            return backer.BackerFundingPackages.ToList(); 
         }
 
         public List<Project> ShowAllProjects()
@@ -61,29 +58,18 @@ namespace CrowdfundApp.Services
 
         public List<Project> ShowTrendsProjects()
         {
-
-            List<Project> projects = ShowAllProjects();
-            List<Project> top5Projects = new List<Project>();
-            int count = 0;
-
-            List<Project> SortedList = projects.OrderBy(o => o.TotalFundings).ToList();
-            foreach (var project in SortedList)
-            {
-                if (count >= 5)
-                {
-                    break;
-                }
-                top5Projects.Add(project);
-                count++;
-            }
-            return top5Projects;
+            return db.Projects.OrderByDescending(o => o.TotalFundings).Take(5).ToList();
         }
 
-        public void Fund(int projectId, int fundingPackageId)
+        public void Fund(int projectId, int fundingPackageId, int backerId)
         {
             Project project = db.Projects.Find(projectId);
             FundingPackage fundingPackage = db.FundingPackages.Find(fundingPackageId);
+            Backer backer = db.Backers.Find(backerId);
+            //BackerFundingPackage backerFundingPackage = new BackerFundingPackage { Backer= backer } //prosthiki BackerFundingPackage stin lista toy project
             project.TotalFundings += fundingPackage.Price;
+            
+            db.SaveChanges();
         }
     }
 }

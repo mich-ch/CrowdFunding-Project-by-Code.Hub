@@ -27,7 +27,7 @@ namespace CrowdfundApp.Services
                 Title = projectOption.Title,
                 Description = projectOption.Description,
                 StatusUpdate = projectOption.StatusUpdate,
-                TotalFundings = projectOption.TotalFundings,
+                TotalFundings = projectOption.TotalFundings, //Om
                 Goal = projectOption.Goal,
                 Category = projectOption.Category,
                 Active = true
@@ -38,7 +38,7 @@ namespace CrowdfundApp.Services
         }
         public List<FundingPackage> ShowFundingPackages()
         {
-            return db.FundingPackages.ToList();
+            return db.FundingPackages.ToList(); //where(projectid)
         }
 
 
