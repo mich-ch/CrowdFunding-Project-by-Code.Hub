@@ -36,12 +36,10 @@ namespace CrowdfundApp.Services
             db.SaveChanges();
             return project;
         }
-        public List<FundingPackage> ShowFundingPackages()
+        public List<FundingPackage> ShowFundingPackages(int projectId)
         {
-            return db.FundingPackages.ToList(); //where(projectid)
+            return db.FundingPackages.Where(fundPack => fundPack.ProjectId == projectId).ToList();
         }
-
-
 
     }
 }

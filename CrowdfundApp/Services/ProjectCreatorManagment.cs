@@ -26,7 +26,6 @@ namespace CrowdfundApp.Services
                 Email = projectCreatortOption.Email,
                 Phone = projectCreatortOption.Phone
             };
-
             db.ProjectCreators.Add(projectCreator);
             db.SaveChanges();
 
@@ -53,10 +52,11 @@ namespace CrowdfundApp.Services
                 .ToList(); 
         }
 
-        public string PostStatusUpdate(int projectId) 
+        public string PostStatusUpdate(int projectId, string statusUpdate) 
         { 
             Project project = db.Projects.Find(projectId);
-
+            project.StatusUpdate = statusUpdate;
+            db.SaveChanges();
             return project.StatusUpdate; 
         }
         public bool AddFundingPackage(int projectId, FundingPackageOption fundingPackageOption) 
@@ -64,7 +64,6 @@ namespace CrowdfundApp.Services
             Project project = db.Projects.Find(projectId);
             FundingPackageManagment fundingPackageManager = new FundingPackageManagment(db); //help
             FundingPackage fundingPackage = fundingPackageManager.CreateFundingPackage(fundingPackageOption);
-
             project.FundingPackages.Add(fundingPackage);
 
             db.SaveChanges();

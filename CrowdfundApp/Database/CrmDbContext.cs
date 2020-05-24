@@ -11,7 +11,7 @@ namespace CrowdfundApp.Database
         public DbSet<ProjectCreator> ProjectCreators { get; set; }
         public DbSet<Backer> Backers { get; set; }
         public DbSet<FundingPackage> FundingPackages { get; set; }
-        public DbSet<BackerFundingPackage> BackerProjects { get; set; }
+        public DbSet<BackerFundingPackage> BackerFundingPackages { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<Multimedia> Multimedia { get; set; }
        

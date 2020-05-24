@@ -2,7 +2,7 @@
 
 namespace CrowdfundApp.Migrations
 {
-    public partial class migrate : Migration
+    public partial class test1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -50,18 +50,12 @@ namespace CrowdfundApp.Migrations
                     StatusUpdate = table.Column<string>(nullable: true),
                     TotalFundings = table.Column<decimal>(nullable: false),
                     Goal = table.Column<decimal>(nullable: false),
-                    Active = table.Column<bool>(nullable: false),
-                    BackerId = table.Column<int>(nullable: true)
+                    Category = table.Column<string>(nullable: true),
+                    Active = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Projects", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Projects_Backers_BackerId",
-                        column: x => x.BackerId,
-                        principalTable: "Backers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Projects_ProjectCreators_ProjectCreatorId",
                         column: x => x.ProjectCreatorId,
@@ -71,50 +65,24 @@ namespace CrowdfundApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BackerProjects",
+                name: "FundingPackages",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    BackerId = table.Column<int>(nullable: true),
-                    ProjectId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_BackerProjects", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_BackerProjects_Backers_BackerId",
-                        column: x => x.BackerId,
-                        principalTable: "Backers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_BackerProjects_Projects_ProjectId",
-                        column: x => x.ProjectId,
-                        principalTable: "Projects",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Fundings",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProjectId = table.Column<int>(nullable: false),
                     Price = table.Column<decimal>(nullable: false),
-                    Reward = table.Column<string>(nullable: true),
-                    ProjectId = table.Column<int>(nullable: true)
+                    Reward = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Fundings", x => x.Id);
+                    table.PrimaryKey("PK_FundingPackages", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Fundings_Projects_ProjectId",
+                        name: "FK_FundingPackages_Projects_ProjectId",
                         column: x => x.ProjectId,
                         principalTable: "Projects",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -123,10 +91,10 @@ namespace CrowdfundApp.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    ProjectId = table.Column<int>(nullable: false),
                     Path = table.Column<string>(nullable: true),
                     IsPhoto = table.Column<bool>(nullable: false),
-                    IsVideo = table.Column<bool>(nullable: false),
-                    ProjectId = table.Column<int>(nullable: true)
+                    IsVideo = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -136,33 +104,66 @@ namespace CrowdfundApp.Migrations
                         column: x => x.ProjectId,
                         principalTable: "Projects",
                         principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "BackerFundingPackages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BackerId = table.Column<int>(nullable: true),
+                    FundingPackageId = table.Column<int>(nullable: true),
+                    ProjectId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BackerFundingPackages", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_BackerFundingPackages_Backers_BackerId",
+                        column: x => x.BackerId,
+                        principalTable: "Backers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_BackerFundingPackages_FundingPackages_FundingPackageId",
+                        column: x => x.FundingPackageId,
+                        principalTable: "FundingPackages",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_BackerFundingPackages_Projects_ProjectId",
+                        column: x => x.ProjectId,
+                        principalTable: "Projects",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_BackerProjects_BackerId",
-                table: "BackerProjects",
+                name: "IX_BackerFundingPackages_BackerId",
+                table: "BackerFundingPackages",
                 column: "BackerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BackerProjects_ProjectId",
-                table: "BackerProjects",
+                name: "IX_BackerFundingPackages_FundingPackageId",
+                table: "BackerFundingPackages",
+                column: "FundingPackageId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BackerFundingPackages_ProjectId",
+                table: "BackerFundingPackages",
                 column: "ProjectId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Fundings_ProjectId",
-                table: "Fundings",
+                name: "IX_FundingPackages_ProjectId",
+                table: "FundingPackages",
                 column: "ProjectId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Multimedia_ProjectId",
                 table: "Multimedia",
                 column: "ProjectId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Projects_BackerId",
-                table: "Projects",
-                column: "BackerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Projects_ProjectCreatorId",
@@ -173,19 +174,19 @@ namespace CrowdfundApp.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "BackerProjects");
-
-            migrationBuilder.DropTable(
-                name: "Fundings");
+                name: "BackerFundingPackages");
 
             migrationBuilder.DropTable(
                 name: "Multimedia");
 
             migrationBuilder.DropTable(
-                name: "Projects");
+                name: "Backers");
 
             migrationBuilder.DropTable(
-                name: "Backers");
+                name: "FundingPackages");
+
+            migrationBuilder.DropTable(
+                name: "Projects");
 
             migrationBuilder.DropTable(
                 name: "ProjectCreators");

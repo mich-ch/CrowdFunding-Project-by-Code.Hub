@@ -10,6 +10,7 @@ namespace CrowdfundApp.Services
     public interface IProjectManager
     {
         public Project CreateProject(ProjectOption projectOption);
-        public List<FundingPackage> ShowFundingPackages();
+        List<FundingPackage> ShowFundingPackages(int projectId);
+
     }
 }

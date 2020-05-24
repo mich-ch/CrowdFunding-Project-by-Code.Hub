@@ -38,10 +38,18 @@ namespace CrowdfundApp.Services
                      .ToList();
         }
 
-        public List<BackerFundingPackage> ShowFundingProjectsByBacker(int backerId)
+        public List<Project> ShowFundingProjectsByBacker(int backerId)
         {
             Backer backer = db.Backers.Find(backerId);
-            return backer.BackerFundingPackages.ToList(); 
+            List<BackerFundingPackage> backerFundingPackages = backer.BackerFundingPackages.ToList();
+            List<Project> projects = new List<Project>();
+            int projectId;
+            foreach (var backerFundingPackage in backerFundingPackages)
+            {
+                projectId = backerFundingPackage.FundingPackage.ProjectId;
+                projects.Add(db.Projects.Find(projectId));
+            }
+            return projects;
         }
 
         public List<Project> ShowAllProjects()
@@ -66,9 +74,13 @@ namespace CrowdfundApp.Services
             Project project = db.Projects.Find(projectId);
             FundingPackage fundingPackage = db.FundingPackages.Find(fundingPackageId);
             Backer backer = db.Backers.Find(backerId);
-            //BackerFundingPackage backerFundingPackage = new BackerFundingPackage { Backer= backer } //prosthiki BackerFundingPackage stin lista toy project
             project.TotalFundings += fundingPackage.Price;
-            
+            BackerFundingPackage backerFundingPackage = new BackerFundingPackage
+            {
+                Backer = backer,
+                FundingPackage = fundingPackage 
+            }; 
+            project.BackerFundingPackages.Add(backerFundingPackage);    //prosthiki BackerFundingPackage stin lista toy project
             db.SaveChanges();
         }
     }

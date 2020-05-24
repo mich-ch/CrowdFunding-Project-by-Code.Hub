@@ -14,6 +14,5 @@ namespace CrowdfundApp.Options
         public decimal Goal { get; set; }
         public string Category { get; set; }
         public bool Active { get; set; }
-
     }
 }

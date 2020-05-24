@@ -25,8 +25,6 @@ namespace CrowdfundApp.Services
                 Reward = fundingPackageOption.Reward,
                 ProjectId = fundingPackageOption.ProjectId
             };
-
-
             db.FundingPackages.Add(fundingPackage);
             db.SaveChanges();
 

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CrowdfundApp.Migrations
 {
     [DbContext(typeof(CrmDbContext))]
-    [Migration("20200520180508_migrate")]
-    partial class migrate
+    [Migration("20200524163213_test1")]
+    partial class test1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -45,7 +45,7 @@ namespace CrowdfundApp.Migrations
                     b.ToTable("Backers");
                 });
 
-            modelBuilder.Entity("CrowdfundApp.Models.BackerProject", b =>
+            modelBuilder.Entity("CrowdfundApp.Models.BackerFundingPackage", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -55,6 +55,9 @@ namespace CrowdfundApp.Migrations
                     b.Property<int?>("BackerId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("FundingPackageId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("ProjectId")
                         .HasColumnType("int");
 
@@ -62,9 +65,11 @@ namespace CrowdfundApp.Migrations
 
                     b.HasIndex("BackerId");
 
+                    b.HasIndex("FundingPackageId");
+
                     b.HasIndex("ProjectId");
 
-                    b.ToTable("BackerProjects");
+                    b.ToTable("BackerFundingPackages");
                 });
 
             modelBuilder.Entity("CrowdfundApp.Models.FundingPackage", b =>
@@ -77,7 +82,7 @@ namespace CrowdfundApp.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int?>("ProjectId")
+                    b.Property<int>("ProjectId")
                         .HasColumnType("int");
 
                     b.Property<string>("Reward")
@@ -87,7 +92,7 @@ namespace CrowdfundApp.Migrations
 
                     b.HasIndex("ProjectId");
 
-                    b.ToTable("Fundings");
+                    b.ToTable("FundingPackages");
                 });
 
             modelBuilder.Entity("CrowdfundApp.Models.Multimedia", b =>
@@ -106,7 +111,7 @@ namespace CrowdfundApp.Migrations
                     b.Property<string>("Path")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ProjectId")
+                    b.Property<int>("ProjectId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -126,8 +131,8 @@ namespace CrowdfundApp.Migrations
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("BackerId")
-                        .HasColumnType("int");
+                    b.Property<string>("Category")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -148,8 +153,6 @@ namespace CrowdfundApp.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BackerId");
 
                     b.HasIndex("ProjectCreatorId");
 
@@ -180,37 +183,41 @@ namespace CrowdfundApp.Migrations
                     b.ToTable("ProjectCreators");
                 });
 
-            modelBuilder.Entity("CrowdfundApp.Models.BackerProject", b =>
+            modelBuilder.Entity("CrowdfundApp.Models.BackerFundingPackage", b =>
                 {
                     b.HasOne("CrowdfundApp.Models.Backer", "Backer")
-                        .WithMany()
+                        .WithMany("BackerFundingPackages")
                         .HasForeignKey("BackerId");
 
-                    b.HasOne("CrowdfundApp.Models.Project", "Project")
-                        .WithMany()
+                    b.HasOne("CrowdfundApp.Models.FundingPackage", "FundingPackage")
+                        .WithMany("BackerFundingPackages")
+                        .HasForeignKey("FundingPackageId");
+
+                    b.HasOne("CrowdfundApp.Models.Project", null)
+                        .WithMany("BackerFundingPackages")
                         .HasForeignKey("ProjectId");
                 });
 
             modelBuilder.Entity("CrowdfundApp.Models.FundingPackage", b =>
                 {
                     b.HasOne("CrowdfundApp.Models.Project", null)
-                        .WithMany("RewardPackages")
-                        .HasForeignKey("ProjectId");
+                        .WithMany("FundingPackages")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("CrowdfundApp.Models.Multimedia", b =>
                 {
                     b.HasOne("CrowdfundApp.Models.Project", null)
                         .WithMany("Multimedia")
-                        .HasForeignKey("ProjectId");
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("CrowdfundApp.Models.Project", b =>
                 {
-                    b.HasOne("CrowdfundApp.Models.Backer", null)
-                        .WithMany("Projects")
-                        .HasForeignKey("BackerId");
-
                     b.HasOne("CrowdfundApp.Models.ProjectCreator", null)
                         .WithMany("Projects")
                         .HasForeignKey("ProjectCreatorId")
