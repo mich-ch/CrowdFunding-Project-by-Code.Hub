@@ -27,7 +27,7 @@ namespace CrowdfundApp.Services
                 Title = projectOption.Title,
                 Description = projectOption.Description,
                 StatusUpdate = projectOption.StatusUpdate,
-                TotalFundings = projectOption.TotalFundings, //Om
+                TotalFundings = 0m,
                 Goal = projectOption.Goal,
                 Category = projectOption.Category,
                 Active = true
@@ -36,9 +36,11 @@ namespace CrowdfundApp.Services
             db.SaveChanges();
             return project;
         }
+        
         public List<FundingPackage> ShowFundingPackages(int projectId)
         {
-            return db.FundingPackages.Where(fundPack => fundPack.ProjectId == projectId).ToList();
+            //xreiazetai na psaxnoyme sti vasi i na epistrefoyme ti lista toy modeloy project?
+            return db.FundingPackages.Where(fundingPackage => fundingPackage.ProjectId == projectId).ToList();
         }
 
     }

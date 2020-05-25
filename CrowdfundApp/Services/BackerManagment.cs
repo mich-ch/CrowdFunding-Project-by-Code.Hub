@@ -75,13 +75,16 @@ namespace CrowdfundApp.Services
             Project project = db.Projects.Find(projectId);
             FundingPackage fundingPackage = db.FundingPackages.Find(fundingPackageId);
             Backer backer = db.Backers.Find(backerId);
+
             project.TotalFundings += fundingPackage.Price;
+
             BackerFundingPackage backerFundingPackage = new BackerFundingPackage
             {
                 Backer = backer,
                 FundingPackage = fundingPackage 
             }; 
-            project.BackerFundingPackages.Add(backerFundingPackage);    //prosthiki BackerFundingPackage stin lista toy project
+
+            project.BackerFundingPackages.Add(backerFundingPackage); 
             db.SaveChanges();
         }
     }

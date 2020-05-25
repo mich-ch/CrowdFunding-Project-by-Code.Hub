@@ -16,11 +16,12 @@ namespace CrowdfundApp.Database
         public DbSet<Multimedia> Multimedia { get; set; }
        
 
-        private readonly string connectionString =
-            "Data Source=localhost;" +
-            "Initial Catalog = CrowdfundApp; " +
-            "Integrated Security = True;";
+        private readonly string connectionString = "Server=localhost;Database=CrowdfundApp;User Id=sa;Password=admin!@#123;";
+            //"Data Source=localhost;" +
+            //"Initial Catalog = CrowdfundApp; " +
+            //"Integrated Security = True;";
 
+        
 
         protected override void OnConfiguring
             (DbContextOptionsBuilder optionsBuilder)

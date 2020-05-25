@@ -59,10 +59,11 @@ namespace CrowdfundApp.Services
             db.SaveChanges();
             return project.StatusUpdate; 
         }
+
         public bool AddFundingPackage(int projectId, FundingPackageOption fundingPackageOption) 
         { 
             Project project = db.Projects.Find(projectId);
-            FundingPackageManagment fundingPackageManager = new FundingPackageManagment(db); //help
+            FundingPackageManagment fundingPackageManager = new FundingPackageManagment(db); 
             FundingPackage fundingPackage = fundingPackageManager.CreateFundingPackage(fundingPackageOption);
             project.FundingPackages.Add(fundingPackage);
 
