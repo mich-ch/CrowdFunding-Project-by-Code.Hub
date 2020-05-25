@@ -41,14 +41,15 @@ namespace CrowdfundApp.Services
         public List<Project> ShowFundingProjectsByBacker(int backerId)
         {
             Backer backer = db.Backers.Find(backerId);
-            List<BackerFundingPackage> backerFundingPackages = backer.BackerFundingPackages.ToList();
             List<Project> projects = new List<Project>();
             int projectId;
-            foreach (var backerFundingPackage in backerFundingPackages)
+
+            foreach (var backerFundingPackage in backer.BackerFundingPackages)
             {
                 projectId = backerFundingPackage.FundingPackage.ProjectId;
                 projects.Add(db.Projects.Find(projectId));
             }
+
             return projects;
         }
 
