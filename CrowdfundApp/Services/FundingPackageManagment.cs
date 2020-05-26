@@ -19,11 +19,14 @@ namespace CrowdfundApp.Services
 
         public FundingPackage CreateFundingPackage(FundingPackageOption fundingPackageOption)   //ok
         {
+            IProjectManager projMng = new ProjectManagment(db);
+            Project project = new Project();
+            project = db.Projects.Find(fundingPackageOption.ProjectId);
             FundingPackage fundingPackage = new FundingPackage
             {
                 Price = fundingPackageOption.Price,
                 Reward = fundingPackageOption.Reward,
-                ProjectId = fundingPackageOption.ProjectId
+                Project = project
             };
             db.FundingPackages.Add(fundingPackage);
             db.SaveChanges();

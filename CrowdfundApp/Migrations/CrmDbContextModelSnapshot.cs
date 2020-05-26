@@ -80,7 +80,7 @@ namespace CrowdfundApp.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("ProjectId")
+                    b.Property<int?>("ProjectId")
                         .HasColumnType("int");
 
                     b.Property<string>("Reward")
@@ -192,11 +192,9 @@ namespace CrowdfundApp.Migrations
 
             modelBuilder.Entity("CrowdfundApp.Models.FundingPackage", b =>
                 {
-                    b.HasOne("CrowdfundApp.Models.Project", null)
+                    b.HasOne("CrowdfundApp.Models.Project", "Project")
                         .WithMany("FundingPackages")
-                        .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProjectId");
                 });
 
             modelBuilder.Entity("CrowdfundApp.Models.Multimedia", b =>

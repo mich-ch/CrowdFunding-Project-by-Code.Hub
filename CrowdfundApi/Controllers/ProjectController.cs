@@ -46,11 +46,7 @@ namespace CrowdfundApi.Controllers
             return projMangr.ShowFundingPackages(projectId);
         }
 
-        [HttpGet("allproj")]    //dokimi
-        public List<Project> GetAll()
-        {
-            return projMangr.GetAll();
-        }
+       
 
 
     }

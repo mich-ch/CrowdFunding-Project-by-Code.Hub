@@ -40,7 +40,7 @@ namespace CrowdfundApp.Services
         public List<FundingPackage> ShowFundingPackages(int projectId)  //ok
         {
             //xreiazetai na psaxnoyme sti vasi i na epistrefoyme ti lista toy modeloy project?
-            return db.FundingPackages.Where(fundingPackage => fundingPackage.ProjectId == projectId).ToList();
+            return db.FundingPackages.Where(fundingPackage => fundingPackage.Project.Id == projectId).ToList();
         }
     }
 }

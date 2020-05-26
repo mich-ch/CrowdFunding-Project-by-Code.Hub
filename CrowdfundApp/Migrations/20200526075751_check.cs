@@ -2,7 +2,7 @@
 
 namespace CrowdfundApp.Migrations
 {
-    public partial class mid : Migration
+    public partial class check : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -70,7 +70,7 @@ namespace CrowdfundApp.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProjectId = table.Column<int>(nullable: false),
+                    ProjectId = table.Column<int>(nullable: true),
                     Price = table.Column<decimal>(nullable: false),
                     Reward = table.Column<string>(nullable: true)
                 },
@@ -82,7 +82,7 @@ namespace CrowdfundApp.Migrations
                         column: x => x.ProjectId,
                         principalTable: "Projects",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
