@@ -17,7 +17,7 @@ namespace CrowdfundApp.Services
             db = _db;
         }
 
-        public Backer CreateBacker(BackerOption backerOption)
+        public Backer CreateBacker(BackerOption backerOption)   //ok
         {
             Backer backer = new Backer
             {
@@ -31,45 +31,60 @@ namespace CrowdfundApp.Services
             return backer;
         }
 
-        public List<Project> TextProjectsSearch(string projectTitle)
+        public List<Project> TextProjectsSearch(string projectTitle)    //ok
         {
             return db.Projects
                      .Where(proj => proj.Title == projectTitle)
                      .ToList();
         }
 
-        public List<BackerFundingPackage> ShowFundingProjectsByBacker(int backerId)
+        public List<Project> ShowFundingProjectsByBacker(int backerId)  //ok
         {
             Backer backer = db.Backers.Find(backerId);
-            return backer.BackerFundingPackages.ToList(); 
+            List<Project> projects = new List<Project>();
+
+            foreach (var backerFundingPackage in backer.BackerFundingPackages)
+            {
+                projects.Add(backerFundingPackage.FundingPackage.Project);
+            }
+
+            return projects;
         }
 
-        public List<Project> ShowAllProjects()
+        public List<Project> ShowAllProjects()  //ok
         {
             return db.Projects.ToList();
         }
 
-        public List<Project> ShowProjectsByCategory(string category)
+        public List<Project> ShowProjectsByCategory(string category)    //ok
         {
             return db.Projects
                      .Where(Project => Project.Category == category)
                      .ToList();
         }
 
-        public List<Project> ShowTrendsProjects()
+        public List<Project> ShowTrendsProjects()   //ok
         {
             return db.Projects.OrderByDescending(o => o.TotalFundings).Take(5).ToList();
         }
 
-        public void Fund(int projectId, int fundingPackageId, int backerId)
+        public BackerFundingPackage Fund(int projectId, int fundingPackageId, int backerId) //ok
         {
             Project project = db.Projects.Find(projectId);
             FundingPackage fundingPackage = db.FundingPackages.Find(fundingPackageId);
-            Backer backer = db.Backers.Find(backerId);
-            //BackerFundingPackage backerFundingPackage = new BackerFundingPackage { Backer= backer } //prosthiki BackerFundingPackage stin lista toy project
+            //Backer backer = db.Backers.Find(backerId);
+
             project.TotalFundings += fundingPackage.Price;
+
+            BackerFundingPackage backerFundingPackage = new BackerFundingPackage
+            {
+                Backer = db.Backers.Find(backerId),
+                FundingPackage = db.FundingPackages.Find(fundingPackageId)
+            };
+            db.BackerFundingPackages.Add(backerFundingPackage);
             
             db.SaveChanges();
+            return backerFundingPackage;
         }
     }
 }

@@ -9,6 +9,5 @@ namespace CrowdfundApp.Models
         public int Id { get; set; }
         public Backer Backer { get; set; }
         public FundingPackage FundingPackage { get; set; }
-
     }
 }

@@ -43,7 +43,7 @@ namespace CrowdfundApp.Migrations
                     b.ToTable("Backers");
                 });
 
-            modelBuilder.Entity("CrowdfundApp.Models.BackerProject", b =>
+            modelBuilder.Entity("CrowdfundApp.Models.BackerFundingPackage", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -53,6 +53,9 @@ namespace CrowdfundApp.Migrations
                     b.Property<int?>("BackerId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("FundingPackageId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("ProjectId")
                         .HasColumnType("int");
 
@@ -60,9 +63,11 @@ namespace CrowdfundApp.Migrations
 
                     b.HasIndex("BackerId");
 
+                    b.HasIndex("FundingPackageId");
+
                     b.HasIndex("ProjectId");
 
-                    b.ToTable("BackerProjects");
+                    b.ToTable("BackerFundingPackages");
                 });
 
             modelBuilder.Entity("CrowdfundApp.Models.FundingPackage", b =>
@@ -95,16 +100,10 @@ namespace CrowdfundApp.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<bool>("IsPhoto")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsVideo")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Path")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ProjectId")
+                    b.Property<int>("ProjectId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -133,7 +132,7 @@ namespace CrowdfundApp.Migrations
                     b.Property<decimal>("Goal")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("ProjectCreatorId")
+                    b.Property<int?>("ProjectCreatorId")
                         .HasColumnType("int");
 
                     b.Property<string>("StatusUpdate")
@@ -176,20 +175,24 @@ namespace CrowdfundApp.Migrations
                     b.ToTable("ProjectCreators");
                 });
 
-            modelBuilder.Entity("CrowdfundApp.Models.BackerProject", b =>
+            modelBuilder.Entity("CrowdfundApp.Models.BackerFundingPackage", b =>
                 {
                     b.HasOne("CrowdfundApp.Models.Backer", "Backer")
-                        .WithMany("BackerProjects")
+                        .WithMany("BackerFundingPackages")
                         .HasForeignKey("BackerId");
 
-                    b.HasOne("CrowdfundApp.Models.Project", "Project")
-                        .WithMany("BackerProjects")
+                    b.HasOne("CrowdfundApp.Models.FundingPackage", "FundingPackage")
+                        .WithMany("BackerFundingPackages")
+                        .HasForeignKey("FundingPackageId");
+
+                    b.HasOne("CrowdfundApp.Models.Project", null)
+                        .WithMany("BackerFundingPackages")
                         .HasForeignKey("ProjectId");
                 });
 
             modelBuilder.Entity("CrowdfundApp.Models.FundingPackage", b =>
                 {
-                    b.HasOne("CrowdfundApp.Models.Project", null)
+                    b.HasOne("CrowdfundApp.Models.Project", "Project")
                         .WithMany("FundingPackages")
                         .HasForeignKey("ProjectId");
                 });
@@ -198,16 +201,16 @@ namespace CrowdfundApp.Migrations
                 {
                     b.HasOne("CrowdfundApp.Models.Project", null)
                         .WithMany("Multimedia")
-                        .HasForeignKey("ProjectId");
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("CrowdfundApp.Models.Project", b =>
                 {
-                    b.HasOne("CrowdfundApp.Models.ProjectCreator", null)
+                    b.HasOne("CrowdfundApp.Models.ProjectCreator", "ProjectCreator")
                         .WithMany("Projects")
-                        .HasForeignKey("ProjectCreatorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProjectCreatorId");
                 });
 #pragma warning restore 612, 618
         }

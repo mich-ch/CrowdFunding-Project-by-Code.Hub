@@ -7,7 +7,7 @@ namespace CrowdfundApp.Models
     public class Project
     {
         public int Id { get; set; }
-        public int ProjectCreatorId { get; set; }
+        public ProjectCreator ProjectCreator { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string StatusUpdate { get; set; }
@@ -18,7 +18,5 @@ namespace CrowdfundApp.Models
         public List<Multimedia> Multimedia { get; set; }
         public List<FundingPackage> FundingPackages { get; set; }
         public List<BackerFundingPackage> BackerFundingPackages { get; set; }
-
-
     }
 }

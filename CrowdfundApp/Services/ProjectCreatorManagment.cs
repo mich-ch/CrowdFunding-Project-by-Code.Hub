@@ -17,7 +17,7 @@ namespace CrowdfundApp.Services
             db = _db;
         }
 
-        public ProjectCreator CreateProjectCreator(ProjectCreatorOption projectCreatortOption)
+        public ProjectCreator CreateProjectCreator(ProjectCreatorOption projectCreatortOption)  //ok
         { 
             ProjectCreator projectCreator = new ProjectCreator
             {
@@ -26,51 +26,51 @@ namespace CrowdfundApp.Services
                 Email = projectCreatortOption.Email,
                 Phone = projectCreatortOption.Phone
             };
-
             db.ProjectCreators.Add(projectCreator);
             db.SaveChanges();
 
             return projectCreator; 
         }
 
-        public ProjectCreator FindProjectCreator(int projectCreatorId) 
+        public ProjectCreator FindProjectCreator(int projectCreatorId)  //ok
         { 
             return db.ProjectCreators.Find(projectCreatorId); 
         }
 
-        public List<Project> ShowProjectsByCreator(int projectCreatorId) 
-        { 
+        public List<Project> ShowProjectsByCreator(int projectCreatorId)    //ok
+        {
+            ProjectCreator projectCreator = db.ProjectCreators.Find(projectCreatorId);
             return db.Projects
-                .Where(project => project.ProjectCreatorId == projectCreatorId)
+                .Where(project => project.ProjectCreator == projectCreator)
                 .ToList();
         }
 
-        public List<Project> ShowFundingProjectsByCreator(int projectCreatorId) 
-        { 
+        public List<Project> ShowFundingProjectsByCreator(int projectCreatorId)     //ok
+        {
+            ProjectCreator projectCreator = db.ProjectCreators.Find(projectCreatorId);
             return db.Projects
-                .Where(project => project.ProjectCreatorId == projectCreatorId)
+                .Where(project => project.ProjectCreator == projectCreator)
                 .Where(project => project.TotalFundings > 0)
                 .ToList(); 
         }
 
-        public string PostStatusUpdate(int projectId) 
+        public Project PostStatusUpdate(int projectId, string statusUpdate)     //ok
         { 
             Project project = db.Projects.Find(projectId);
-
-            return project.StatusUpdate; 
+            project.StatusUpdate = statusUpdate;
+            db.SaveChanges();
+            return project; 
         }
-        public bool AddFundingPackage(int projectId, FundingPackageOption fundingPackageOption) 
+
+        public FundingPackage AddFundingPackage(int projectId, FundingPackageOption fundingPackageOption)   //ok
         { 
             Project project = db.Projects.Find(projectId);
-            FundingPackageManagment fundingPackageManager = new FundingPackageManagment(db); //help
+            FundingPackageManagment fundingPackageManager = new FundingPackageManagment(db); 
             FundingPackage fundingPackage = fundingPackageManager.CreateFundingPackage(fundingPackageOption);
-
             project.FundingPackages.Add(fundingPackage);
 
             db.SaveChanges();
-            return true; 
+            return fundingPackage; 
         }
-
-
     }
 }

@@ -15,19 +15,19 @@ namespace CrowdfundApp.Services
         public ProjectManagment(CrmDbContext _db)
         {
             db = _db;
-
-
         }
 
-        public Project CreateProject(ProjectOption projectOption)
+        public Project CreateProject(ProjectOption projectOption)   //ok
         {
+            IProjectCreatorManager creatorMng = new ProjectCreatorManagment(db);    
+
             Project project = new Project
             {
-                ProjectCreatorId = projectOption.ProjectCreatorId,
+                ProjectCreator = creatorMng.FindProjectCreator(projectOption.ProjectCreatorId),
                 Title = projectOption.Title,
                 Description = projectOption.Description,
                 StatusUpdate = projectOption.StatusUpdate,
-                TotalFundings = projectOption.TotalFundings, //Om
+                TotalFundings = 0m,
                 Goal = projectOption.Goal,
                 Category = projectOption.Category,
                 Active = true
@@ -36,12 +36,11 @@ namespace CrowdfundApp.Services
             db.SaveChanges();
             return project;
         }
-        public List<FundingPackage> ShowFundingPackages()
+        
+        public List<FundingPackage> ShowFundingPackages(int projectId)  //ok
         {
-            return db.FundingPackages.ToList(); //where(projectid)
+            //xreiazetai na psaxnoyme sti vasi i na epistrefoyme ti lista toy modeloy project?
+            return db.FundingPackages.Where(fundingPackage => fundingPackage.Project.Id == projectId).ToList();
         }
-
-
-
     }
 }
