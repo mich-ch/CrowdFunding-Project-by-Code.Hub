@@ -20,6 +20,15 @@ namespace CrowdfundApp
             IProjectCreatorManager projCrMng = new ProjectCreatorManagment(db);
             IBackerManager backerMangr = new BackerManagment(db);
 
+
+            ProjectCreatorOption projectCreatorOption = new ProjectCreatorOption
+            {
+                FullName = "Stelios",
+                Address = "SKG",
+                Email = "email"
+            };
+            ProjectCreator projectCreator = projCrMng.CreateProjectCreator(projectCreatorOption);
+
             BackerOption backerOpt = new BackerOption()
             {
                 FullName = "mixalis",
