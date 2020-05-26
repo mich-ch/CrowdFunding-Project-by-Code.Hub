@@ -14,7 +14,7 @@ namespace CrowdfundApp.Services
         List<Project> ShowAllProjects();
         List<Project> ShowProjectsByCategory(string category);
         List<Project> ShowTrendsProjects();
-        void Fund(int projectId, int fundingPackageId, int backerId); 
+        BackerFundingPackage Fund(int projectId, int fundingPackageId, int backerId); 
 
     }
 }

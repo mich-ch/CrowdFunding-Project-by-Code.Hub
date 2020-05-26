@@ -11,6 +11,5 @@ namespace CrowdfundApp.Services
     {
         public Project CreateProject(ProjectOption projectOption);
         List<FundingPackage> ShowFundingPackages(int projectId);
-
     }
 }
