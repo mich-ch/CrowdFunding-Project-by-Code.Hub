@@ -34,15 +34,9 @@ namespace CrowdfundApp
             //   $"Id= {project.Id} ProjectCreatorId= {project.ProjectCreatorId} Title= {project.Title} ");
 
 
-            ////ShowProjectsByCreator
-            //using CrmDbContext db = new CrmDbContext();
-            //IProjectCreatorManager creatorMangr = new ProjectCreatorManagment(db);
-            //List<Project> projects = creatorMangr.ShowProjectsByCreator(1);
-            //foreach (var project in projects)
-            //{
-            //    Console.WriteLine(
-            //    $"ProjectCreatorId= {project.ProjectCreatorId} Title= {project.Title} ");
-            //}
+            IProjectManager projectMng = new ProjectManagment(db);
+            IProjectCreatorManager projCrMng = new ProjectCreatorManagment(db);
+            IBackerManager backerMangr = new BackerManagment(db);
 
 
             // Backer
@@ -79,12 +73,18 @@ namespace CrowdfundApp
             //}
 
 
+            Backer backer = backerMangr.CreateBacker(backerOpt);
+            Project project = projectMng.CreateProject(projectOption);
+            FundingPackage funding = projCrMng.AddFundingPackage(1, fundOpt);
 
+            Console.WriteLine(
+                      $"Id= {backer.Id} Address= {backer.Address} Email= {backer.Email}  ");
 
+            Console.WriteLine(
+                      $"Id= {project.Id} Description= {project.Description} StatusUpdate= {project.StatusUpdate}  ");
 
-            // Fundings
-            //public FundingPackage CreateFundingPackage(FundingPackageOption fundingPackageOption) 
-            //public FundingPackage FindFundingPackage(int FundingsPackageId)
+            Console.WriteLine(
+                      $"Id= {funding.Id} Reward= {funding.Reward} ");
 
 
 
@@ -98,19 +98,6 @@ namespace CrowdfundApp
             //        Phone = "432432"
             //    };
 
-            //    IProjectCreatorManager creatorMangr = new ProjectCreatorManagment(db);
-            //    ProjectCreator creator = creatorMangr.CreateProjectCreator(projCreator);
-            //    Console.WriteLine(
-            //        $"Id= {creator.Id} Name= {creator.FullName} Address= {creator.Address}");
-            //    //public ProjectCreator FindProjectCreator(int projectCreatorId) 
-            //    ProjectCreator creator2 = creatorMangr.FindProjectCreator(1);
-            //    Console.WriteLine(
-            //        $"Id= {creator2.Id} Name= {creator2.FullName} Address= {creator2.Address}");
-            //    //public List<Project> ShowProjectsByCreator(int projectCreatorId)
-            //    List<Project> projects = creatorMangr.ShowProjectsByCreator(1);
-            //    //public List<Project> ShowFundingProjectsByCreator(int projectCreatorId) 
-            //    //public string PostStatusUpdate(int projectId) 
-            //    //public bool AddFundingPackage(int projectId, FundingPackageOption fundingPackageOption)
         }
     }
 }

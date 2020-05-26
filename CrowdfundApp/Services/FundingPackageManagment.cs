@@ -17,16 +17,14 @@ namespace CrowdfundApp.Services
             db = _db;
         }
 
-        public FundingPackage CreateFundingPackage(FundingPackageOption fundingPackageOption)
+        public FundingPackage CreateFundingPackage(FundingPackageOption fundingPackageOption)   //ok
         {
             FundingPackage fundingPackage = new FundingPackage
             {
                 Price = fundingPackageOption.Price,
                 Reward = fundingPackageOption.Reward,
-                ProjectId = fundingPackageOption.ProjectId
+                Project = db.Projects.Find(fundingPackageOption.ProjectId)
             };
-
-
             db.FundingPackages.Add(fundingPackage);
             db.SaveChanges();
 
