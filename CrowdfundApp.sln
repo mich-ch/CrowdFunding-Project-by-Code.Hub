@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrowdfundApp", "CrowdfundApp\CrowdfundApp.csproj", "{70C58C1E-7D57-49C6-ABA2-322F5F5E5D77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrowdfundApi", "CrowdfundApi\CrowdfundApi.csproj", "{6C95B2BB-9427-497D-9A81-714E413BF027}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrowdfundApi", "CrowdfundApi\CrowdfundApi.csproj", "{6C95B2BB-9427-497D-9A81-714E413BF027}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrowdfundMvc", "CrowdfundMvc\CrowdfundMvc.csproj", "{B500265B-768D-4C08-B733-C8FDB77604A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{6C95B2BB-9427-497D-9A81-714E413BF027}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C95B2BB-9427-497D-9A81-714E413BF027}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C95B2BB-9427-497D-9A81-714E413BF027}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B500265B-768D-4C08-B733-C8FDB77604A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B500265B-768D-4C08-B733-C8FDB77604A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B500265B-768D-4C08-B733-C8FDB77604A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B500265B-768D-4C08-B733-C8FDB77604A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

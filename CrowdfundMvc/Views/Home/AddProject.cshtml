@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewData["Title"] = "AddProject";
+}
+
+
+<h1 align="center"> Add Project </h1> 
+
+
+<form>
+    <table align="center">
+        <tr><td>FullName	</td>  <td><input type="text" id="FullName" name="FullName">	</td>  </tr>
+        <tr><td>Address	</td>  <td> <input type="text" id="Address" name="Address">	</td>  </tr>
+        <tr><td>Email	</td>  <td> <input type="text" id="Email" name="Email">	</td>  </tr>
+        <tr><td>Phone	</td>  <td> <input type="text" id="Phone" name="Phone">	</td>  </tr>
+        <tr>
+            <td>
+                <input type="button" onclick="submitBackerToServer()"
+                       value="Submit">
+    </table>
+
+</form>
+
+<div id="responseDiv">   </div>
