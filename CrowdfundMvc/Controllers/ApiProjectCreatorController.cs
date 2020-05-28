@@ -13,11 +13,13 @@ namespace CrowdfundMvc.Controllers
     {
 
         private IProjectCreatorManager projectCreatorManager; 
+        private IProjectManager projectManager; 
         
 
-        public ApiProjectCreatorController(IProjectCreatorManager _projectCreatorManager)
+        public ApiProjectCreatorController(IProjectCreatorManager _projectCreatorManager, IProjectManager _projectManager)
         {
             projectCreatorManager = _projectCreatorManager;
+            projectManager = _projectManager;
         }
 
         [HttpPost]
@@ -26,6 +28,11 @@ namespace CrowdfundMvc.Controllers
             return projectCreatorManager.CreateProjectCreator(projectCreatorOption);
         }
 
+        [HttpPost]
+        public Project AddProject([FromBody] ProjectOption projectOption)
+        {
+            return projectManager.CreateProject(projectOption);
+        }
 
         public IActionResult Index()
         {

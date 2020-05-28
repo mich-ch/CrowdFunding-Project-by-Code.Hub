@@ -21,9 +21,9 @@
             $('#Address').val("")
             $('#Email').val("")
             $('#Phone').val("")
-            //customerId = data["id"]
-            alert('You have successfully registered')
-            //window.open("/Home/Shopping?customerId=" + customerId, "_self")
+            projectCreatorId = data["id"]
+            //alert('You have successfully registered')
+            window.open("/AddProject?projectCreatorId=" + projectCreatorId, "_self")
         },
         error: function (jqXhr, textStatus, errorThrown) {
             console.log(errorThrown);
@@ -68,6 +68,42 @@ $('#loginButtonBacker').click(
     }
 
 );
+
+function submitProjectToServer() {
+
+    actionMethod = "POST"
+    actionUrl = "/apiprojectcreator/addproject"
+    sendData = {
+        "Title": $('#Title').val(),
+        "ProjectCreatorId": $('#ProjectCreatorId').val(),
+        "Description": $('#Description').val(),
+        "StatusUpdate": $('#StatusUpdate').val(),
+        "Goal": $('#Goal').val(),
+        "Category": $('#Category').val(),
+    }
+    $.ajax({
+        url: actionUrl,
+        dataType: 'json',
+        type: actionMethod,
+        data: JSON.stringify(sendData),
+        contentType: 'application/json',
+        processData: false,
+        success: function (data, textStatus, jQxhr) {
+            $('#responseDiv').html(JSON.stringify(data));
+            $('#Title').val("");
+            $('#Description').val("")
+            $('#StatusUpdate').val("")
+            $('#Goal').val("")
+            $('#Category').val("")
+            //customerId = data["id"]
+            alert('You have successfully add project')
+            //window.open("/Home/Shopping?customerId=" + customerId, "_self")
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            console.log(errorThrown);
+        }
+    });
+}
 
 function submitBackerToServer() {
  
