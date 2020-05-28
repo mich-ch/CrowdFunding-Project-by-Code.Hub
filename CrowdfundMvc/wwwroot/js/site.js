@@ -1,4 +1,4 @@
-﻿function submitProjectCreatorToServer() {
+﻿function submitProjectCreatorToServer(projectcreatorid) {
  
     actionMethod = "POST"
     actionUrl = "/apiprojectcreator/addprojectcreator"
@@ -21,9 +21,11 @@
             $('#Address').val("")
             $('#Email').val("")
             $('#Phone').val("")
-            projectCreatorId = data["id"]
+            projectcreatorid = data["id"]
             //alert('You have successfully registered')
-            window.open("/AddProject?projectCreatorId=" + projectCreatorId, "_self")
+            window.open("/AddProject?projectcreatorid=" + projectcreatorid, "_self")
+
+           
         },
         error: function (jqXhr, textStatus, errorThrown) {
             console.log(errorThrown);
@@ -31,11 +33,11 @@
     });
 }
 
-$('#loginButtonBacker').click(
+$('#loginButton').click(
     function () {
 
         actionMethod = "POST"
-        actionUrl = "/apibacker/loginbacker"
+        actionUrl = "/apibacker/login"
         sendData = {
             "Email": $('#Email').val()
         }
@@ -54,7 +56,7 @@ $('#loginButtonBacker').click(
                 else {
                     //backerId = data["id"]
                     alert('You have successfully login')
-                    //window.open("/Home/shopping?customerId=" + customerId, "_self")
+                    //window.open("/Home/addproject?backerId="+backerId,"_self")
                 }
 
             },
@@ -69,17 +71,18 @@ $('#loginButtonBacker').click(
 
 );
 
-function submitProjectToServer() {
+function submitProjectToServer(projectcreatorid) {
 
     actionMethod = "POST"
     actionUrl = "/apiprojectcreator/addproject"
     sendData = {
         "Title": $('#Title').val(),
-        "ProjectCreatorId": $('#ProjectCreatorId').val(),
         "Description": $('#Description').val(),
         "StatusUpdate": $('#StatusUpdate').val(),
         "Goal": $('#Goal').val(),
         "Category": $('#Category').val(),
+        "ProjectCreatorId": projectcreatorid
+
     }
     $.ajax({
         url: actionUrl,
@@ -95,9 +98,9 @@ function submitProjectToServer() {
             $('#StatusUpdate').val("")
             $('#Goal').val("")
             $('#Category').val("")
-            //customerId = data["id"]
+           // projectcreatorid = data["id"]
             alert('You have successfully add project')
-            //window.open("/Home/Shopping?customerId=" + customerId, "_self")
+            //window.open("/Home/AddProject?projectcreatorid=" + projectcreatorid, "_self")
         },
         error: function (jqXhr, textStatus, errorThrown) {
             console.log(errorThrown);

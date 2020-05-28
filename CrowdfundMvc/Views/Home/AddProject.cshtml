@@ -1,4 +1,4 @@
-﻿
+﻿@model CrowdfundMvc.Models.ProjectCreatorModel
 @{
     ViewData["Title"] = "AddProject";
 }
@@ -16,7 +16,7 @@
         <tr><td>Category	</td>  <td> <input type="text" id="Category" name="Category">	</td>  </tr>
         <tr>
             <td>
-                <input type="button" onclick="submitProjectToServer()"
+                <input type="button" onclick="submitProjectToServer(@Model.ProjectCreatorId)"
                        value="Submit">
     </table>
 

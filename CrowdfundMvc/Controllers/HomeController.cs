@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using CrowdfundMvc.Models;
 using CrowdfundApp.Database;
 using CrowdfundApp.Services;
+using CrowdfundApp.Models;
 
 namespace CrowdfundMvc.Controllers
 {
@@ -55,10 +56,16 @@ namespace CrowdfundMvc.Controllers
             return View();
         }
 
+        // erwthsh #2
         [HttpGet("AddProject")]
-        public IActionResult AddProject()
+        public IActionResult AddProject([FromQuery] int  projectCreatorId)
         {
-            return View();
+            ProjectCreatorModel pj = new ProjectCreatorModel
+            {
+                ProjectCreatorId = projectCreatorId
+            };
+
+            return View(pj);
         }
 
         [HttpGet("Projects")]
@@ -81,8 +88,9 @@ namespace CrowdfundMvc.Controllers
             return View(allProjects);
         }
 
-        [HttpGet("LoginBacker")]
-        public IActionResult LoginBacker()
+        // erwthsh #1
+        [HttpGet("Login")]
+        public IActionResult Login()
         {
             return View();
         }
