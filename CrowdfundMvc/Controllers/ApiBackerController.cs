@@ -24,6 +24,13 @@ namespace CrowdfundMvc.Controllers
         {
             return backerManager.CreateBacker(backerOption);
         }
+
+        [HttpPost("loginbacker")]
+        public Backer LoginBacker([FromBody] BackerOption backOpt)
+        {
+            return backerManager.FindBackerByEmail(backOpt);
+        }
+
         public IActionResult Index()
         {
             return View();

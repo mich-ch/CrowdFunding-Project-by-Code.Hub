@@ -14,6 +14,7 @@ namespace CrowdfundApp.Services
         List<Project> ShowAllProjects();
         List<Project> ShowProjectsByCategory(string category);
         List<Project> ShowTrendsProjects();
+        Backer FindBackerByEmail(BackerOption backOption);
         BackerFundingPackage Fund(int projectId, int fundingPackageId, int backerId); 
 
     }

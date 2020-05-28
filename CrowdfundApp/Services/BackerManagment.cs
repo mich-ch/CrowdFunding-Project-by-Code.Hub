@@ -68,6 +68,15 @@ namespace CrowdfundApp.Services
             return db.Projects.OrderByDescending(o => o.TotalFundings).Take(5).ToList();
         }
 
+        public Backer FindBackerByEmail(BackerOption backOption)
+        {
+            if (backOption == null) return null;
+            if (backOption.Email == null) return null;
+
+            return db.Backers
+                .Where(back => back.Email == backOption.Email)
+                .FirstOrDefault();
+        }
         public BackerFundingPackage Fund(int projectId, int fundingPackageId, int backerId) //ok
         {
             Project project = db.Projects.Find(projectId);

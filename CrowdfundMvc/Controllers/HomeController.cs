@@ -61,6 +61,31 @@ namespace CrowdfundMvc.Controllers
             return View();
         }
 
+        [HttpGet("Projects")]
+        public IActionResult Projects()
+        {
+            ProjectModel allProjects = new ProjectModel
+            {
+                Projects = backermanager.ShowAllProjects()
+            };
+            return View(allProjects);
+        }
+
+        [HttpGet("TrendsProjects")]
+        public IActionResult TrendsProjects()
+        {
+            ProjectModel allProjects = new ProjectModel
+            {
+                Projects = backermanager.ShowTrendsProjects()
+            };
+            return View(allProjects);
+        }
+
+        [HttpGet("LoginBacker")]
+        public IActionResult LoginBacker()
+        {
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
