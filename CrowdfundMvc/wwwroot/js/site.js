@@ -56,8 +56,13 @@ $('#loginButton').click(
                 }
                 else {
                     projectCreatorid = data["id"]
+                    FullName = data["FullName"]
+                    Address = data["Address"]
+                    Email = data["Email"]
+                    Phone = data["Phone"]
                     alert('You have successfully login')
-                    window.open("/Home/AddProject?projectCreatorid=" + projectCreatorid,"_self")
+                    window.open("/Home/ProfileProjectCreator?projectCreatorid=" + projectCreatorid , "_self")
+                      
                 }
 
             },

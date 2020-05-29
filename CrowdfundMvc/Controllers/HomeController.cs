@@ -60,6 +60,23 @@ namespace CrowdfundMvc.Controllers
             return View();
         }
 
+        [HttpGet("ProfileProjectCreator")]
+        public IActionResult ProfileProjectCreator([FromQuery] int projectCreatorId)
+        {
+            ProjectCreator projectCreator = projectCreatorManager.FindProjectCreator(projectCreatorId);
+            ProjectCreatorModel pj = new ProjectCreatorModel
+            {
+                ProjectCreatorId = projectCreatorId,
+                FullName=projectCreator.FullName,
+                Address=projectCreator.Address,
+                Phone=projectCreator.Phone,
+                Email=projectCreator.Email
+            };
+
+            return View(pj);
+        }
+
+
         [HttpGet("AddBacker")]
         public IActionResult AddBacker()
         {

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CrowdfundApp.Migrations
 {
     [DbContext(typeof(CrmDbContext))]
-    [Migration("20200528200128_test3")]
-    partial class test3
+    [Migration("20200529072921_projecta")]
+    partial class projecta
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

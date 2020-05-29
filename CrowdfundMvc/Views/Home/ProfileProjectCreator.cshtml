@@ -1,0 +1,34 @@
+﻿@model CrowdfundMvc.Models.ProjectCreatorModel
+@{
+    ViewData["Title"] = "Profile";
+}
+
+
+<h1>Profile</h1>
+
+<table id="resultTable" border="1"
+       style="color:darkslateblue;background-color:lightcyan"
+       cellpadding="1" cellspacing="1">
+    <tr>
+
+        <th>ProjectCreatorId</th>
+        <th>FullName </th>
+        <th>Address</th>
+        <th>Email</th>
+        <th>Phone</th>
+
+    </tr>
+    @{
+        //razor syntax
+            <tr> 
+
+                <td> @Model.ProjectCreatorId</td>
+                <td> @Model.FullName </td>
+                <td> @Model.Address</td>
+                <td> @Model.Email</td>
+                <td> @Model.Phone</td>
+ 
+            </tr>
+        }
+    
+</table>

@@ -39,6 +39,8 @@ namespace CrowdfundMvc.Controllers
         public ProjectCreator LoginProjectCreator([FromBody] ProjectCreatorOption projCreatorOpt)
         {
             return projectCreatorManager.FindProjectCreatorByEmail(projCreatorOpt);
+
         }
+
     }
 }
