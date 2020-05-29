@@ -72,10 +72,7 @@ namespace CrowdfundApp
 
             BackerFundingPackage bfp = backerMangr.Fund(1, 1, 1);
             BackerFundingPackage bfp2 = backerMangr.Fund(2, 2, 1);
-            BackerFundingPackage bfp3 = backerMangr.Fund(3, 2, 1);
-            BackerFundingPackage bfp4 = backerMangr.Fund(4, 2, 1);
-            BackerFundingPackage bfp5 = backerMangr.Fund(5, 2, 1);
-            BackerFundingPackage bfp6 = backerMangr.Fund(6, 2, 1);
+         
             //Console.WriteLine(
             //          $"Id= {bfp.Id} Backer= {bfp.Backer.Id} FundingPackage= {bfp.FundingPackage.Id}  ");
 

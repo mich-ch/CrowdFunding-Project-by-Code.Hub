@@ -12,6 +12,7 @@ using CrowdfundApp.Models;
 
 namespace CrowdfundMvc.Controllers
 {
+    [Route("[controller]")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> logger;
@@ -20,11 +21,12 @@ namespace CrowdfundMvc.Controllers
         private IFundingPackageManager fundingPackageManager;
         private IProjectCreatorManager projectCreatorManager;
         private IProjectManager projectManager;
+
         public HomeController(ILogger<HomeController> _logger, CrmDbContext _db,
-          IBackerManager _backermanager, 
-          IFundingPackageManager _fundingPackageManager, 
-          IProjectCreatorManager _projectCreatorManager, 
-          IProjectManager _projectManager)
+                              IBackerManager _backermanager, 
+                              IFundingPackageManager _fundingPackageManager, 
+                              IProjectCreatorManager _projectCreatorManager, 
+                              IProjectManager _projectManager)
         {
             logger = _logger;
             db = _db;
@@ -34,11 +36,19 @@ namespace CrowdfundMvc.Controllers
             projectManager = _projectManager;
         }
 
+        [HttpGet("")]
+        public IActionResult Home()
+        {
+            return View("Index");
+        }
+
+        [HttpGet("Index")]
         public IActionResult Index()
         {
             return View();
         }
 
+        [HttpGet("Privacy")]
         public IActionResult Privacy()
         {
             return View();
@@ -56,7 +66,6 @@ namespace CrowdfundMvc.Controllers
             return View();
         }
 
-        // erwthsh #2
         [HttpGet("AddProject")]
         public IActionResult AddProject([FromQuery] int  projectCreatorId)
         {
@@ -88,13 +97,13 @@ namespace CrowdfundMvc.Controllers
             return View(allProjects);
         }
 
-        // erwthsh #1
         [HttpGet("Login")]
         public IActionResult Login()
         {
             return View();
         }
 
+        [HttpGet("Error")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

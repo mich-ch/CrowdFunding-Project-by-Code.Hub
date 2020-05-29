@@ -17,6 +17,16 @@ namespace CrowdfundApp.Services
             db = _db;
         }
 
+        public ProjectCreator FindProjectCreatorByEmail(ProjectCreatorOption projCreatorOption)
+        {
+            if (projCreatorOption == null) return null;
+            if (projCreatorOption.Email == null) return null;
+
+            return db.ProjectCreators
+                .Where(projCreator => projCreator.Email == projCreatorOption.Email)
+                .FirstOrDefault();
+        }
+
         public ProjectCreator CreateProjectCreator(ProjectCreatorOption projectCreatortOption)  //ok
         { 
             ProjectCreator projectCreator = new ProjectCreator

@@ -23,7 +23,8 @@
             $('#Phone').val("")
             projectcreatorid = data["id"]
             //alert('You have successfully registered')
-            window.open("/AddProject?projectcreatorid=" + projectcreatorid, "_self")
+            //window.open("/AddProject?projectcreatorid=" + projectcreatorid, "_self")
+            window.open("/Home/AddProject?projectCreatorid=" + projectcreatorid, "_self")
 
            
         },
@@ -37,7 +38,7 @@ $('#loginButton').click(
     function () {
 
         actionMethod = "POST"
-        actionUrl = "/apibacker/login"
+        actionUrl = "/apiprojectcreator/login"
         sendData = {
             "Email": $('#Email').val()
         }
@@ -54,9 +55,9 @@ $('#loginButton').click(
                     $('#responseDiv').html("There is no such backer");
                 }
                 else {
-                    //backerId = data["id"]
+                    projectCreatorid = data["id"]
                     alert('You have successfully login')
-                    //window.open("/Home/addproject?backerId="+backerId,"_self")
+                    window.open("/Home/AddProject?projectCreatorid=" + projectCreatorid,"_self")
                 }
 
             },

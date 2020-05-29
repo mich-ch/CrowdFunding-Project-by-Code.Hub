@@ -9,33 +9,22 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CrowdfundMvc.Controllers
 {
-    //[ApiController]
-    //[Route("[controller]")]   na ginei controller gia to login
+    [ApiController]
+    [Route("[controller]")]
     public class ApiBackerController : Controller
     {
         private IBackerManager backerManager;
-
-
         public ApiBackerController(IBackerManager _backerManager )
         {
             backerManager = _backerManager;
         }
 
-        [HttpPost]
+        [HttpPost("addbacker")]
         public Backer AddBacker([FromBody] BackerOption backerOption)
         {
             return backerManager.CreateBacker(backerOption);
         }
 
-        [HttpPost("login")]   
-        public Backer LoginBacker([FromBody] BackerOption backOpt)
-        {
-            return backerManager.FindBackerByEmail(backOpt);
-        }
-
-        public IActionResult Index()
-        {
-            return View();
-        }
+       
     }
 }

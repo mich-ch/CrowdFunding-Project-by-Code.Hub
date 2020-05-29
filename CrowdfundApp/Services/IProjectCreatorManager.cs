@@ -15,7 +15,7 @@ namespace CrowdfundApp.Services
         public Project PostStatusUpdate(int projectId, string statusUpdate);
         FundingPackage AddFundingPackage(int projectId, FundingPackageOption fundingPackageOption); //FundingPackage
 
-
+        ProjectCreator FindProjectCreatorByEmail(ProjectCreatorOption projCreatorOption);
     }
 
 }
