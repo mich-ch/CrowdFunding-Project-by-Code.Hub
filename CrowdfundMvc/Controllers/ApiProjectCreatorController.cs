@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using CrowdfundApp.Models;
 using CrowdfundApp.Options;
 using CrowdfundApp.Services;
+using CrowdfundMvc.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CrowdfundMvc.Controllers
 {
+
     [ApiController]
     [Route("[controller]")]
     public class ApiProjectCreatorController : Controller
@@ -29,7 +31,7 @@ namespace CrowdfundMvc.Controllers
             return projectCreatorManager.CreateProjectCreator(projectCreatorOption);
         }
 
-        [HttpPost("addproject")]
+        [HttpPost("AddProject")]
         public Project AddProject([FromBody] ProjectOption projectOption)
         {
             return projectManager.CreateProject(projectOption);
