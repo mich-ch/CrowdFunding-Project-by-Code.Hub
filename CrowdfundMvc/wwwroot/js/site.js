@@ -73,10 +73,15 @@ function submitProjectToServer(projectcreatorid) {
     });
 }
 
-function ProfileToAddProject(projCreatorId) {
+function ProfileToAddProject(projCreatorId)
+{
     window.open("/Home/AddProject?projCreatorId=" + projCreatorId, "_self");
 }
 
+function ProfileToShowTrendingProject(backerId)
+{
+    window.open("/Home/TrendsProjects?backerId=" + backerId, "_self");
+}
 $('#loginButton').click(
     function () {
 

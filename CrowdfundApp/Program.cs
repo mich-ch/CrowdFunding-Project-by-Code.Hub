@@ -45,7 +45,7 @@ namespace CrowdfundApp
                 StatusUpdate = "status A",
                 TotalFundings = 0m,
                 Goal = 1000m,
-                Category = "sports",
+                Category = "Fashion",
                 Active = true
 
             };
