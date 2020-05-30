@@ -101,11 +101,11 @@ namespace CrowdfundMvc.Controllers
         }
 
         [HttpGet("AddProject")]
-        public IActionResult AddProject([FromQuery] int  projectCreatorId)
+        public IActionResult AddProject([FromQuery] int projCreatorId)
         {
             ProjectCreatorModel pj = new ProjectCreatorModel
             {
-                ProjectCreatorId = projectCreatorId
+                ProjectCreatorId = projCreatorId
             };
 
             return View(pj);

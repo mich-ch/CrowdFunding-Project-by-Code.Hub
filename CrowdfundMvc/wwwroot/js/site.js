@@ -1,4 +1,48 @@
-﻿function submitProjectCreatorToServer(projectcreatorid) {
+﻿ 
+
+function createProject(projectcreatorid) {
+
+    
+    actionMethod = "POST"
+    actionUrl = "/apiprojectcreator/AddProject"
+    //   
+
+    sendData = {
+         "Category": $('#Category').val(),
+        "ProjectCreatorId": projectcreatorid,
+        "Title": $('#Title').val(),
+        "Description": $('#Description').val(),
+        "StatusUpdate": $('#StatusUpdate').val(),
+        "Goal": parseFloat( $('#Goal').val() )
+    }
+
+    alert(JSON.stringify(sendData))
+    $.ajax({
+        url: actionUrl,
+        dataType: 'json',
+        type: actionMethod,
+        data: JSON.stringify(sendData),
+        contentType: 'application/json',
+        processData: false,
+        success: function (data, textStatus, jQxhr) {
+            $('#responseDiv').html(JSON.stringify(data));
+ 
+            alert('You have successfully add project')
+            window.open("/Home/ProfileProjectCreator?projectcreatorid=" + projectcreatorid, "_self")
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            console.log(errorThrown);
+        }
+    });
+}
+
+
+
+
+
+
+
+function submitProjectCreatorToServer(projectcreatorid) {
  
     actionMethod = "POST"
     actionUrl = "/apiprojectcreator/addprojectcreator"
@@ -39,39 +83,7 @@
     });
 }
 
-function submitProjectToServer(projectcreatorid) {
 
-
-    actionMethod = "POST"
-    actionUrl = "/apiprojectcreator/AddProject"
-    sendData = {
-        "Title": $('#Title').val(),
-        "Description": $('#Description').val(),
-        "StatusUpdate": $('#StatusUpdate').val(),
-        "Goal": $('#Goal').val(),
-        "Category": $('#Category').val(),
-        "ProjectCreatorId": projectcreatorid
-    }
-
-    $.ajax({
-        url: actionUrl,
-        dataType: 'json',
-        type: actionMethod,
-        data: JSON.stringify(sendData),
-        contentType: 'application/json',
-        processData: false,
-        success: function (data, textStatus, jQxhr) {
-            $('#responseDiv').html(JSON.stringify(data));
-          
-            projectcreatorid = data["id"]
-            alert('You have successfully add project')
-            window.open("/Home/ProfileProjectCreator?projectcreatorid=" + projectcreatorid, "_self")
-        },
-        error: function (jqXhr, textStatus, errorThrown) {
-            console.log(errorThrown);
-        }
-    });
-}
 
 function ProfileToAddProject(projCreatorId)
 {

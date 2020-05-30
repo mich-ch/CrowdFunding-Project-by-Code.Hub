@@ -28,7 +28,7 @@ namespace CrowdfundApp.Services
                 Description = projectOption.Description,
                 StatusUpdate = projectOption.StatusUpdate,
                 TotalFundings = 0m,
-                Goal = projectOption.Goal,
+                Goal = projectOption.Goal ?? 0,
                 Category = projectOption.Category,
                 Active = true
             };
