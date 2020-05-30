@@ -31,7 +31,7 @@ namespace CrowdfundMvc.Controllers
             return projectCreatorManager.CreateProjectCreator(projectCreatorOption);
         }
 
-        [HttpPost("AddProject")]
+        [HttpPost("addproject")]
         public Project AddProject([FromBody] ProjectOption projectOption)
         {
             return projectManager.CreateProject(projectOption);
