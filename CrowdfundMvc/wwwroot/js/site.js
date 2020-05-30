@@ -121,7 +121,7 @@ $('#loginButton').click(
 );
 
 
-function submitBackerToServer() {
+function submitBackerToServer(backerid) {
  
     actionMethod = "POST"
     actionUrl = "/apibacker/addbacker"
@@ -140,17 +140,26 @@ function submitBackerToServer() {
         processData: false,
         success: function (data, textStatus, jQxhr) {
             $('#responseDiv').html(JSON.stringify(data));
-            $('#FullName').val("");
-            $('#Address').val("")
-            $('#Email').val("")
-            $('#Phone').val("")
-            //customerId = data["id"]
-            alert('You have successfully registered')
-            //window.open("/Home/Shopping?customerId=" + customerId, "_self")
+            if (data == null) {
+                $('#responseDiv').html("There is no such backer");
+            }
+            else {
+                backerid = data["id"]
+                FullName = data["FullName"]
+                Address = data["Address"]
+                Email = data["Email"]
+                Phone = data["Phone"]
+                alert('You have successfully register')
+                window.open("/Home/ProfileBacker?backerid=" + backerid, "_self")
+            }
         },
         error: function (jqXhr, textStatus, errorThrown) {
             console.log(errorThrown);
         }
+
+
+
+
     });
 }
 

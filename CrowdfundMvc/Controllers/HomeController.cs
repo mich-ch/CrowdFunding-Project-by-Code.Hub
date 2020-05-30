@@ -77,6 +77,23 @@ namespace CrowdfundMvc.Controllers
         }
 
 
+        [HttpGet("ProfileBacker")]
+        public IActionResult ProfileBacker([FromQuery] int backerId)
+        {
+            Backer backer = db.Backers.Find(backerId); 
+            BackerModel ba = new BackerModel 
+            {
+                BackerId = backerId,
+                FullName = backer.FullName,
+                Address = backer.Address,
+                Phone = backer.Phone,
+                Email = backer.Email
+            };
+
+            return View(ba);
+        }
+
+
         [HttpGet("AddBacker")]
         public IActionResult AddBacker()
         {
