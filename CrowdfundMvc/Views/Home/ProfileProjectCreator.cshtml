@@ -37,3 +37,65 @@
     </button>
 
 </table>
+
+<h1>Projects</h1>
+
+
+
+
+<table id="productsList" value="@Model.ProjectCreatorId">
+    <tr>
+
+        <th>Title</th>
+        <th>Description </th>
+        <th>StatusUpdate</th>
+        <th>TotalFundings</th>
+        <th>Goal</th>
+        <th>Category</th>
+
+    </tr>
+    @{
+        foreach (var prj in Model.Projects)
+        {
+        <tr>
+            <td >
+                <a href="#" id="prod@(prj.Id)" value="@(prj.Id)"
+                   onclick="addToBasket()">
+                    @prj.Title
+                </a>
+            </td>
+            <td>
+                <a href="#" id="prod@(prj.Id)" value="@(prj.Id)"
+                   onclick="addToBasket()">
+                    @prj.Description
+                </a>
+            </td>
+            <td>
+                <a href="#" id="prod@(prj.Id)" value="@(prj.Id)"
+                   onclick="addToBasket()">
+                    @prj.StatusUpdate
+                </a>
+            </td>
+            <td>
+                <a href="#" id="prod@(prj.Id)" value="@(prj.Id)"
+                   onclick="addToBasket()">
+                    @prj.TotalFundings
+                </a>
+            </td>
+            <td>
+                <a href="#" id="prod@(prj.Id)" value="@(prj.Id)"
+                   onclick="addToBasket()">
+                    @prj.Goal
+                </a>
+            </td>
+            <td>
+                <a href="#" id="prod@(prj.Id)" value="@(prj.Id)"
+                   onclick="addToBasket()">
+                    @prj.Category
+                </a>
+            </td>
+        </tr>
+        }
+    }
+</table>
+

@@ -39,20 +39,23 @@
     });
 }
 
-function submitProjectToServer(projectcreatorid) {
+function createProject(projectcreatorid) {
 
 
     actionMethod = "POST"
     actionUrl = "/apiprojectcreator/AddProject"
+    //   
+
     sendData = {
+        "Category": $('#Category').val(),
+        "ProjectCreatorId": projectcreatorid,
         "Title": $('#Title').val(),
         "Description": $('#Description').val(),
         "StatusUpdate": $('#StatusUpdate').val(),
-        "Goal": $('#Goal').val(),
-        "Category": $('#Category').val(),
-        "ProjectCreatorId": projectcreatorid
+        "Goal": parseFloat($('#Goal').val())
     }
 
+    alert(JSON.stringify(sendData))
     $.ajax({
         url: actionUrl,
         dataType: 'json',
@@ -62,8 +65,7 @@ function submitProjectToServer(projectcreatorid) {
         processData: false,
         success: function (data, textStatus, jQxhr) {
             $('#responseDiv').html(JSON.stringify(data));
-          
-            projectcreatorid = data["id"]
+
             alert('You have successfully add project')
             window.open("/Home/ProfileProjectCreator?projectcreatorid=" + projectcreatorid, "_self")
         },

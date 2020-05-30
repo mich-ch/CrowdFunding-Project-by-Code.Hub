@@ -48,6 +48,8 @@ namespace CrowdfundMvc.Controllers
             return View();
         }
 
+        
+
         [HttpGet("Privacy")]
         public IActionResult Privacy()
         {
@@ -64,8 +66,11 @@ namespace CrowdfundMvc.Controllers
         public IActionResult ProfileProjectCreator([FromQuery] int projectCreatorId)
         {
             ProjectCreator projectCreator = projectCreatorManager.FindProjectCreator(projectCreatorId);
+            List<Project> projects = projectCreatorManager.ShowProjectsByCreator(projectCreatorId);
+
             ProjectCreatorModel pj = new ProjectCreatorModel
             {
+                 Projects = projects,
                 ProjectCreatorId = projectCreatorId,
                 FullName=projectCreator.FullName,
                 Address=projectCreator.Address,
@@ -101,12 +106,14 @@ namespace CrowdfundMvc.Controllers
         }
 
         [HttpGet("AddProject")]
-        public IActionResult AddProject([FromQuery] int  projectCreatorId)
+        public IActionResult AddProject([FromQuery] int projCreatorId)
         {
-            ProjectCreatorModel pj = new ProjectCreatorModel
+            
+
+             ProjectCreatorModel pj = new ProjectCreatorModel
             {
-                ProjectCreatorId = projectCreatorId
-            };
+                ProjectCreatorId = projCreatorId
+             };
 
             return View(pj);
         }

@@ -50,6 +50,20 @@ namespace CrowdfundApp
 
             };
 
+            ProjectOption projectOption2 = new ProjectOption
+            {
+                ProjectCreatorId = 22,
+                Title = "A",
+                Description = "description A",
+                StatusUpdate = "status A",
+                TotalFundings = 0m,
+                Goal = 1000m,
+                Category = "sports",
+                Active = true
+
+            };
+            Project project2 = projectMng.CreateProject(projectOption2);
+
             FundingPackageOption fundOpt = new FundingPackageOption
             {
                 Price = 222,
