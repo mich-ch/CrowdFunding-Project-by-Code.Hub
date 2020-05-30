@@ -147,7 +147,7 @@ $('#loginBackerButton').click(
                     Email = data["Email"]
                     Phone = data["Phone"]
                     alert('You have successfully login')
-                    //window.open("/Home/ProfileProjectCreator?projectCreatorid=" + projectCreatorid, "_self")
+                    window.open("/Home/ProfileBacker?backerid=" + backerid, "_self")
 
                 }
 
