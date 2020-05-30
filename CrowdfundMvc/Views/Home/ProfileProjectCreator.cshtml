@@ -20,15 +20,26 @@
     </tr>
     @{
         //razor syntax
-            <tr> 
+        <tr>
 
-                <td> @Model.ProjectCreatorId</td>
-                <td> @Model.FullName </td>
-                <td> @Model.Address</td>
-                <td> @Model.Email</td>
-                <td> @Model.Phone</td>
- 
-            </tr>
-        }
+            <td> @Model.ProjectCreatorId</td>
+            <td> @Model.FullName </td>
+            <td> @Model.Address</td>
+            <td> @Model.Email</td>
+            <td> @Model.Phone</td>
+
+        </tr>
+    }
+
     
+   
+    
+        <button type="button"
+                href="#" id="prcr@(Model.ProjectCreatorId)" value="@(Model.ProjectCreatorId)"
+           onclick="AddProject()">
+            CreateProject
+        </button>
+    
+
+
 </table>
