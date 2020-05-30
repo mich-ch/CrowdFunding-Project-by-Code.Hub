@@ -95,7 +95,7 @@ $('#loginButton').click(
             processData: false,
             success: function (data, textStatus, jQxhr) {
                 if (data == null) {
-                    $('#responseDiv').html("There is no such backer");
+                    $('#responseDiv').html("There is no such Project Creator");
                 }
                 else {
                     projectCreatorid = data["id"]
@@ -120,8 +120,88 @@ $('#loginButton').click(
 
 );
 
+$('#loginBackerButton').click(
+    function () {
 
-function submitBackerToServer(backerid) {
+        actionMethod = "POST"
+        actionUrl = "/apibacker/loginBacker"
+        sendData = {
+            "Email": $('#Email').val()
+        }
+        $.ajax({
+            url: actionUrl,
+            dataType: 'json',
+            type: actionMethod,
+            data: JSON.stringify(sendData),
+
+            contentType: 'application/json',
+            processData: false,
+            success: function (data, textStatus, jQxhr) {
+                if (data == null) {
+                    $('#responseDiv').html("There is no such backer");
+                }
+                else {
+                    backerid = data["id"]
+                    FullName = data["FullName"]
+                    Address = data["Address"]
+                    Email = data["Email"]
+                    Phone = data["Phone"]
+                    alert('You have successfully login')
+                    //window.open("/Home/ProfileProjectCreator?projectCreatorid=" + projectCreatorid, "_self")
+
+                }
+
+            },
+            error: function (jqXhr, textStatus, errorThrown) {
+                console.log(errorThrown);
+            }
+        });
+
+
+
+    }
+
+);
+
+
+function submitProjectToServer(projectcreatorid) {
+
+    actionMethod = "POST"
+    actionUrl = "/apiprojectcreator/addproject"
+    sendData = {
+        "Title": $('#Title').val(),
+        "Description": $('#Description').val(),
+        "StatusUpdate": $('#StatusUpdate').val(),
+        "Goal": $('#Goal').val(),
+        "Category": $('#Category').val(),
+        "ProjectCreatorId": projectcreatorid
+
+    }
+    $.ajax({
+        url: actionUrl,
+        dataType: 'json',
+        type: actionMethod,
+        data: JSON.stringify(sendData),
+        contentType: 'application/json',
+        processData: false,
+        success: function (data, textStatus, jQxhr) {
+            $('#responseDiv').html(JSON.stringify(data));
+            $('#Title').val("");
+            $('#Description').val("")
+            $('#StatusUpdate').val("")
+            $('#Goal').val("")
+            $('#Category').val("")
+           // projectcreatorid = data["id"]
+            alert('You have successfully add project')
+            //window.open("/Home/AddProject?projectcreatorid=" + projectcreatorid, "_self")
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            console.log(errorThrown);
+        }
+    });
+}
+
+function submitBackerToServer() {
  
     actionMethod = "POST"
     actionUrl = "/apibacker/addbacker"
