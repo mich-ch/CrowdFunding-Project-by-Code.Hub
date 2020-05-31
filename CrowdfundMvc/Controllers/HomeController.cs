@@ -81,6 +81,29 @@ namespace CrowdfundMvc.Controllers
             return View(pj);
         }
 
+        [HttpGet("ProfileProject")]
+        public IActionResult ProfileProject([FromQuery] int projectId)
+        {
+            
+            Project project = projectManager.FindProjectById(projectId);
+
+            //Project project = db.Projects.Find(projectId);
+            ProjectModel pr = new ProjectModel
+            {
+                ProjectId = projectId,
+                ProjectCreator = project.ProjectCreator,    //  se 2o xrono tha to doume
+                Title = project.Title,
+                Description = project.Description,
+                StatusUpdate = project.StatusUpdate,
+                TotalFundings = project.TotalFundings,
+                Goal = project.Goal,
+                Category = project.Category,
+                Active = project.Active
+            };
+
+            return View(pr);
+        }
+
 
         [HttpGet("ProfileBacker")]
         public IActionResult ProfileBacker([FromQuery] int backerId)

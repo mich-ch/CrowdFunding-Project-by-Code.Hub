@@ -80,6 +80,12 @@ function ProfileToAddProject(projCreatorId)
     window.open("/Home/AddProject?projCreatorId=" + projCreatorId, "_self");
 }
 
+function ProfileProject(projectId) {
+    
+    window.open("/Home/ProfileProject?ProjectId=" + projectId, "_self");
+    
+}
+
 function ProfileToShowTrendingProject(backerId)
 {
     window.open("/Home/TrendsProjects?backerId=" + backerId, "_self");

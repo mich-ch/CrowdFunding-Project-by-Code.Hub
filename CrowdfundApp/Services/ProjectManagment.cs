@@ -37,12 +37,16 @@ namespace CrowdfundApp.Services
             return project;
         }
         
+
         public List<FundingPackage> ShowFundingPackages(int projectId)  //ok
         {
             //xreiazetai na psaxnoyme sti vasi i na epistrefoyme ti lista toy modeloy project?
             return db.FundingPackages.Where(fundingPackage => fundingPackage.Project.Id == projectId).ToList();
         }
 
-       
+        public Project FindProjectById(int projectId)
+        {
+            return db.Projects.Find(projectId);
+        }
     }
 }
