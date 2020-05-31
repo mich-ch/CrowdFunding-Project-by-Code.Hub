@@ -185,7 +185,7 @@ namespace CrowdfundApp.Migrations
                         .WithMany("BackerFundingPackages")
                         .HasForeignKey("FundingPackageId");
 
-                    b.HasOne("CrowdfundApp.Models.Project", null)
+                    b.HasOne("CrowdfundApp.Models.Project", "Project")
                         .WithMany("BackerFundingPackages")
                         .HasForeignKey("ProjectId");
                 });

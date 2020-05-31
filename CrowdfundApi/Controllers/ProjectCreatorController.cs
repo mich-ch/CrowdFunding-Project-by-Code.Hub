@@ -66,10 +66,6 @@ namespace CrowdfundApi.Controllers
 
 
         
-        [HttpPost("project/{projectId}/fundingpackage")]
-        public FundingPackage PostFundingPackage(int projectId, FundingPackageOption fundingPackageOption)
-        {
-            return projCreatorMangr.AddFundingPackage(projectId, fundingPackageOption);
-        }
+       
     }
 }

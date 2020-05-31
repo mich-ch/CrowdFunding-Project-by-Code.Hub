@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using CrowdfundApp.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CrowdfundApp.Services
 {
@@ -38,17 +39,17 @@ namespace CrowdfundApp.Services
                      .ToList();
         }
 
-        public List<Project> ShowFundingProjectsByBacker(int backerId)  //ok
+        public List<BackerFundingPackage> ShowFundingPackageByBacker(int backerId)  //ok
         {
             Backer backer = db.Backers.Find(backerId);
             List<Project> projects = new List<Project>();
+            List<BackerFundingPackage> bfp = db.BackerFundingPackages
+                                         .Include(bfp => bfp.Project)
+                                         .Include(bfp => bfp.FundingPackage)
+                                         .Where(bfp => bfp.Backer == backer)
+                                         .ToList();
 
-            foreach (var backerFundingPackage in backer.BackerFundingPackages)
-            {
-                projects.Add(backerFundingPackage.FundingPackage.Project);
-            }
-
-            return projects;
+            return bfp;
         }
 
         public List<Project> ShowAllProjects()  //ok
@@ -77,10 +78,10 @@ namespace CrowdfundApp.Services
                 .Where(back => back.Email == backOption.Email)
                 .FirstOrDefault();
         }
-        public BackerFundingPackage Fund(int projectId, int fundingPackageId, int backerId) //ok
+        public BackerFundingPackage Fund(FundingPackage fundingPackage, int backerId) //ok
         {
-            Project project = db.Projects.Find(projectId);
-            FundingPackage fundingPackage = db.FundingPackages.Find(fundingPackageId);
+            Project project = fundingPackage.Project;
+            
             //Backer backer = db.Backers.Find(backerId);
 
             project.TotalFundings += fundingPackage.Price;
@@ -88,7 +89,8 @@ namespace CrowdfundApp.Services
             BackerFundingPackage backerFundingPackage = new BackerFundingPackage
             {
                 Backer = db.Backers.Find(backerId),
-                FundingPackage = db.FundingPackages.Find(fundingPackageId)
+                FundingPackage = fundingPackage,
+                 Project = project
             };
             db.BackerFundingPackages.Add(backerFundingPackage);
             

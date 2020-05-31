@@ -39,3 +39,42 @@
 
 
 </table>
+
+<table id="productsList" value="@Model.BackerId">
+    <tr>
+
+      
+        <th>Reward </th>
+        <th>Price </th>
+        <th>Project</th>
+        
+
+    </tr>
+    @{
+        foreach (var bfp in Model.backerFundingPackages)
+        {
+        <tr>
+            
+            <td>
+                <a href="#" id="prod@(bfp.Id)" value="@(bfp.Id)"
+                   onclick="addToBasket()">
+                    @bfp.FundingPackage.Reward
+                </a>
+            </td>
+            <td>
+                <a href="#" id="prod@(bfp.Id)" value="@(bfp.Id)"
+                   onclick="addToBasket()">
+                    @bfp.FundingPackage.Price
+                </a>
+            </td>
+            <td>
+                <a href="#" id="prod@(bfp.Id)" value="@(bfp.Id)"
+                   onclick="addToBasket()">
+                    @bfp.Project.Title
+                </a>
+            </td>
+
+        </tr>
+        }
+    }
+</table>

@@ -42,5 +42,7 @@ namespace CrowdfundApp.Services
             //xreiazetai na psaxnoyme sti vasi i na epistrefoyme ti lista toy modeloy project?
             return db.FundingPackages.Where(fundingPackage => fundingPackage.Project.Id == projectId).ToList();
         }
+
+       
     }
 }

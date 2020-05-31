@@ -19,6 +19,7 @@ namespace CrowdfundApp
             IProjectManager projectMng = new ProjectManagment(db);
             IProjectCreatorManager projCrMng = new ProjectCreatorManagment(db);
             IBackerManager backerMangr = new BackerManagment(db);
+            IFundingPackageManager fundMangr = new FundingPackageManagment(db);
 
 
             ProjectCreatorOption projectCreatorOption = new ProjectCreatorOption
@@ -40,9 +41,9 @@ namespace CrowdfundApp
             ProjectOption projectOption = new ProjectOption
             {
                 ProjectCreatorId = 1,
-                Title = "A",
-                Description = "description A",
-                StatusUpdate = "status A",
+                Title = "B",
+                Description = "description B",
+                StatusUpdate = "status B",
                 TotalFundings = 0m,
                 Goal = 1000m,
                 Category = "Fashion",
@@ -50,51 +51,40 @@ namespace CrowdfundApp
 
             };
 
-            ProjectOption projectOption2 = new ProjectOption
-            {
-                ProjectCreatorId = 22,
-                Title = "A",
-                Description = "description A",
-                StatusUpdate = "status A",
-                TotalFundings = 0m,
-                Goal = 1000m,
-                Category = "sports",
-                Active = true
 
-            };
-            Project project2 = projectMng.CreateProject(projectOption2);
 
             FundingPackageOption fundOpt = new FundingPackageOption
             {
-                Price = 222,
-                Reward = "dsadsa",
-                ProjectId = 1
+                Price = 158,
+                Reward = "nadd",
+                ProjectId = 2
             };
 
-            Backer backer = backerMangr.CreateBacker(backerOpt);
-            Project project = projectMng.CreateProject(projectOption);
-            FundingPackage funding = projCrMng.AddFundingPackage(1, fundOpt);
+            //Backer backer = backerMangr.CreateBacker(backerOpt);
+            //Project project = projectMng.CreateProject(projectOption);
+            FundingPackage funding = projCrMng.AddFundingPackage(fundOpt);
 
-            Console.WriteLine(
-                      $"Id= {backer.Id} Address= {backer.Address} Email= {backer.Email}  ");
+            //Console.WriteLine(
+            //          $"Id= {backer.Id} Address= {backer.Address} Email= {backer.Email}  ");
 
-            Console.WriteLine(
-                      $"Id= {project.Id} Description= {project.Description} StatusUpdate= {project.StatusUpdate}  ");
+            //Console.WriteLine(
+            //          $"Id= {project.Id} Description= {project.Description} StatusUpdate= {project.StatusUpdate}  ");
 
-            Console.WriteLine(
-                      $"Id= {funding.Id} Reward= {funding.Reward} ");
+            //Console.WriteLine(
+            //          $"Id= {funding.Id} Reward= {funding.Reward} ");
 
-            BackerFundingPackage bfp = backerMangr.Fund(1, 1, 1);
-            BackerFundingPackage bfp2 = backerMangr.Fund(2, 2, 1);
-         
+           // BackerFundingPackage bfp = backerMangr.Fund(funding, 1);
+            //BackerFundingPackage bfp2 = backerMangr.Fund(2, 2, 1);
+            //BackerFundingPackage bfp3 = backerMangr.Fund(3, 2, 1);
+
             //Console.WriteLine(
             //          $"Id= {bfp.Id} Backer= {bfp.Backer.Id} FundingPackage= {bfp.FundingPackage.Id}  ");
 
-            List<Project> projectsss = backerMangr.ShowFundingProjectsByBacker(1);
-            foreach (var projecttttt in projectsss)
+            List<BackerFundingPackage> bfps = backerMangr.ShowFundingPackageByBacker(1);
+            foreach (var bfp in bfps)
             {
                 Console.WriteLine(
-                         $"Title= {projecttttt.Title} TotalFundings= {projecttttt.TotalFundings} Goal= {projecttttt.Goal}  ");
+                         $"Title= {bfp.Backer} TotalFundings= {bfp.Project} Goal= {bfp.Id}  ");
 
             }
 

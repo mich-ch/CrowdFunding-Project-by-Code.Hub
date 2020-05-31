@@ -13,7 +13,7 @@ namespace CrowdfundApp.Services
         List<Project> ShowProjectsByCreator(int projectCreatorId);
         List<Project> ShowFundingProjectsByCreator(int projectCreatorId);
         public Project PostStatusUpdate(int projectId, string statusUpdate);
-        FundingPackage AddFundingPackage(int projectId, FundingPackageOption fundingPackageOption); //FundingPackage
+        FundingPackage AddFundingPackage(FundingPackageOption fundingPackageOption); //FundingPackage
 
         ProjectCreator FindProjectCreatorByEmail(ProjectCreatorOption projCreatorOption);
     }

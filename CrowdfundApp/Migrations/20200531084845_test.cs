@@ -2,7 +2,7 @@
 
 namespace CrowdfundApp.Migrations
 {
-    public partial class projecta : Migration
+    public partial class test : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

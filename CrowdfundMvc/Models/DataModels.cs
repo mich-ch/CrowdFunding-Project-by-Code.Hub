@@ -41,6 +41,7 @@ namespace CrowdfundMvc.Models
 
     public class BackerModel
     {
+        public List<BackerFundingPackage> backerFundingPackages { get; set; }
         public int BackerId { get; set; }
         public string FullName { get; set; }
         public string Address { get; set; }

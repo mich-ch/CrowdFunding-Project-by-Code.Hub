@@ -85,9 +85,11 @@ namespace CrowdfundMvc.Controllers
         [HttpGet("ProfileBacker")]
         public IActionResult ProfileBacker([FromQuery] int backerId)
         {
+            List<BackerFundingPackage> backerFunds = backermanager.ShowFundingPackageByBacker(backerId);
             Backer backer = db.Backers.Find(backerId); 
             BackerModel ba = new BackerModel 
             {
+                backerFundingPackages = backerFunds,
                 BackerId = backerId,
                 FullName = backer.FullName,
                 Address = backer.Address,
@@ -149,6 +151,8 @@ namespace CrowdfundMvc.Controllers
         {
             return View();
         }
+
+
 
 
         [HttpGet("Error")]
