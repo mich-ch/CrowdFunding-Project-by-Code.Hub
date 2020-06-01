@@ -24,7 +24,7 @@ namespace CrowdfundApp.Services
             project = db.Projects.Find(fundingPackageOption.ProjectId);
             FundingPackage fundingPackage = new FundingPackage
             {
-                Price = fundingPackageOption.Price,
+                Price = fundingPackageOption.Price ?? 0,
                 Reward = fundingPackageOption.Reward,
                 Project = project
             };

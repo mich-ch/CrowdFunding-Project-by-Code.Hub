@@ -8,6 +8,7 @@ namespace CrowdfundMvc.Models
 {
     public class ProjectModel
     {
+        public List<FundingPackage> FundingPackages { get; set; }
         public ProjectCreator ProjectCreator { get; set; }
         public List<Project> Projects { get; set; }
         public int ProjectId { get; set; }

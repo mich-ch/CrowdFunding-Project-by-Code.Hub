@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using CrowdfundApp.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CrowdfundApp.Services
 {
@@ -15,6 +16,18 @@ namespace CrowdfundApp.Services
         public ProjectCreatorManagment(CrmDbContext _db)
         {
             db = _db;
+        }
+
+        public List<FundingPackage> ShowFundingPackageByProjectId(int projectId)
+        {
+            Project project = db.Projects.Find(projectId);
+            return      db.FundingPackages
+                          .Include(fundPack => fundPack.Project)
+                          .Where(fundPack => fundPack.Project == project)
+                          .ToList();
+
+
+
         }
 
         public ProjectCreator FindProjectCreatorByEmail(ProjectCreatorOption projCreatorOption)

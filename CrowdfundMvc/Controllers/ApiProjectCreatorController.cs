@@ -37,6 +37,12 @@ namespace CrowdfundMvc.Controllers
             return projectManager.CreateProject(projectOption).Id;
         }
 
+        [HttpPost("addpackage")]
+        public int AddFundingPackage([FromBody] FundingPackageOption fundingPackageOption)
+        {
+            return projectCreatorManager.AddFundingPackage(fundingPackageOption).Id;
+        }
+
         [HttpPost("login")]
         public ProjectCreator LoginProjectCreator([FromBody] ProjectCreatorOption projCreatorOpt)
         {

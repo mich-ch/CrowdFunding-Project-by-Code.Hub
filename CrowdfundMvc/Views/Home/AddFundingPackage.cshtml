@@ -1,0 +1,27 @@
+﻿@model CrowdfundMvc.Models.ProjectModel
+@{
+    ViewData["Title"] = "AddFundingPackage";
+}
+
+
+    <h1 align="center"> AddFundingPackage </h1>
+
+
+
+<form>
+    <table align="center">
+        <tr><td>Price	</td>  <td><input type="text" id="Price" name="Price">	</td>  </tr>
+        <tr><td>Reward	</td>  <td> <input type="text" id="Reward" name="Reward">	</td>  </tr>
+        <tr>
+            <td>
+                <input type="button" onclick="createpackage(@Model.ProjectId)"
+                       value="Submit">
+            </td>
+        </tr>
+    </table>
+
+</form>
+
+
+
+<div id="responseDiv">   </div>

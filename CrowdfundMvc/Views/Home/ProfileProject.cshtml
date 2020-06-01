@@ -40,3 +40,37 @@
     }
 
 </table>
+<table id="productsList" value="@Model.ProjectId">
+    <tr>
+
+
+        <th>Reward </th>
+        <th>Price </th>
+        <th>Project</th>
+
+
+    </tr>
+    @{
+        foreach (var bfp in Model.FundingPackages)
+        {
+      
+
+            <tr>
+                <td>
+                    @bfp.Reward
+                </td>
+
+                <td>
+                    @bfp.Price
+                </td>
+            </tr>
+
+        
+        }
+    }
+</table>
+
+    <button type="button"
+            href="#" onclick="addpackage(@Model.ProjectId)">
+        Create Funding Package
+    </button>

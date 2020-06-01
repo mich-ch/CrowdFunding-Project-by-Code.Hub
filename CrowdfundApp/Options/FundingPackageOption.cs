@@ -6,7 +6,7 @@ namespace CrowdfundApp.Options
 {
     public class FundingPackageOption
     {
-        public decimal Price { get; set; }
+        public decimal? Price { get; set; }
         public string Reward { get; set; }
         public int ProjectId { get; set; }
     }

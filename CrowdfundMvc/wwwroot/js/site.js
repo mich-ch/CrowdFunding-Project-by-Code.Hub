@@ -72,6 +72,40 @@ function projects(projectCat) { //den trexei
 
 }
 
+function createpackage(ProjectId) {
+
+
+    actionMethod = "POST"
+    actionUrl = "/apiprojectcreator/addpackage"
+      
+
+    sendData = {
+        "Price": parseFloat($('#Price').val()),
+        "ProjectId": ProjectId,
+        "Reward": $('#Reward').val()
+        
+    }
+
+    alert(JSON.stringify(sendData))
+    $.ajax({
+        url: actionUrl,
+        dataType: 'json',
+        type: actionMethod,
+        data: JSON.stringify(sendData),
+        contentType: 'application/json',
+        processData: false,
+        success: function (data, textStatus, jQxhr) {
+            $('#responseDiv').html(JSON.stringify(data));
+
+            alert('You have successfully add package')
+            window.open("/Home/ProfileProject?ProjectId=" + ProjectId, "_self")
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            console.log(errorThrown);
+        }
+    });
+}
+
 function createProject(projectcreatorid) {
 
 
@@ -111,6 +145,10 @@ function createProject(projectcreatorid) {
 function ProfileToAddProject(projCreatorId)
 {
     window.open("/Home/AddProject?projCreatorId=" + projCreatorId, "_self");
+}
+
+function addpackage(ProjectId) {
+    window.open("/Home/AddFundingPackage?ProjectId=" + ProjectId, "_self");
 }
 
 function ProfileProject(projectId) {
