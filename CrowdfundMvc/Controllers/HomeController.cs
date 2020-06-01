@@ -163,12 +163,12 @@ namespace CrowdfundMvc.Controllers
             return View(allProjects);
         }
 
-        [HttpGet("ProjectsByCategory")]
-        public IActionResult ProjectsByCategory([FromQuery]string category)
+        [HttpGet("ProjectsByCategory")] // na mpei sthn projects
+        public IActionResult ProjectsByCategory([FromQuery] string projectCat)
         {
             ProjectModel allProjects = new ProjectModel
             {
-                Projects = backermanager.ShowProjectsByCategory(category)
+                Projects = backermanager.ShowProjectsByCategory(projectCat)
             };
             return View(allProjects);
         }

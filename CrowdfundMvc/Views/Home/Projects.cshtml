@@ -4,35 +4,68 @@
 }
 
 
-    <h1>Projects</h1>
+<h1>Projects</h1>
+
+@*<button type="button"
+        href="#" onclick="ProfileToShowTrendingProject(@Model.)">
+    Show Trending Projects
+</button>*@
+
+
+
+    <form id="Category">
+        <table align="center">
+
+            <tr>
+                <td>Category	</td>
+                <td>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                    <select name="projectCat" id="Category" name="Category">
+                        <option value="Sports">Sports</option>
+                        <option value="Fashion">Fashion</option>
+                        <option value="Education">Education</option>
+                        <option value="IT">IT</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="submit" onclick="projects(@Model.Category)"
+                           value="Submit">
+        </table>
+
+    </form>
 
 <table id="resultTable" border="1"
        style="color:darkslateblue;background-color:lightcyan"
        cellpadding="1" cellspacing="1">
     <tr>
-        
+
         <th>Title</th>
         <th>Description </th>
         <th>StatusUpdate</th>
         <th>TotalFundings</th>
         <th>Goal</th>
         <th>Category</th>
-        
+
     </tr>
     @{
         //razor syntax
         foreach (var project in Model.Projects)
         {
             <tr id="cusTable@(project.Id)">
-                
+
                 <td> @project.Title</td>
                 <td> @project.Description </td>
                 <td> @project.StatusUpdate</td>
                 <td> @project.TotalFundings</td>
                 <td> @project.Goal</td>
                 <td> @project.Category</td>
-              
-                
+
+
             </tr>
         }
     }

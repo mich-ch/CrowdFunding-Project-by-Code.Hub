@@ -39,6 +39,39 @@
     });
 }
 
+
+function projects(projectCat) { //den trexei 
+    actionMethod = "GET"
+    actionUrl = "/Home/Projects"
+    sendData = {
+        
+        "Category": projectCat,
+       
+    }
+
+    $.ajax({
+        url: actionUrl,
+        dataType: 'json',
+        type: actionMethod,
+        data: JSON.stringify(sendData),
+        contentType: 'application/json',
+        processData: false,
+        success: function (data, textStatus, jQxhr) {
+            $('#responseDiv').html(JSON.stringify(data));
+
+            alert('You have successfully add project')
+            window.open("/Home/ProjectsByCategory?projectCat=" + projectCat, "_self");
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            console.log(errorThrown);
+        }
+    });
+
+   
+    
+
+}
+
 function createProject(projectcreatorid) {
 
 
