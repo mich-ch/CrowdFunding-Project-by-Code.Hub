@@ -46,6 +46,7 @@ namespace CrowdfundApp.Services
             List<BackerFundingPackage> bfp = db.BackerFundingPackages
                                          .Include(bfp => bfp.Project)
                                          .Include(bfp => bfp.FundingPackage)
+                                         .Include(bfp => bfp.Backer)
                                          .Where(bfp => bfp.Backer == backer)
                                          .ToList();
 
@@ -69,6 +70,11 @@ namespace CrowdfundApp.Services
             return db.Projects.OrderByDescending(o => o.TotalFundings).Take(5).ToList();
         }
 
+        public FundingPackage ShowFundingPackageById(int fundingPackId)
+        {
+            return db.FundingPackages.Find(fundingPackId);
+        }
+
         public Backer FindBackerByEmail(BackerOption backOption)
         {
             if (backOption == null) return null;
@@ -78,9 +84,9 @@ namespace CrowdfundApp.Services
                 .Where(back => back.Email == backOption.Email)
                 .FirstOrDefault();
         }
-        public BackerFundingPackage Fund(FundingPackage fundingPackage, int backerId) //ok
+        public BackerFundingPackage Fund(FundingPackage fundingPackage, int backerId, int projectId) //ok
         {
-            Project project = fundingPackage.Project;
+            Project project = db.Projects.Find(projectId);
             
             //Backer backer = db.Backers.Find(backerId);
 

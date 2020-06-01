@@ -48,6 +48,7 @@ function projects(projectCat) { //den trexei
         "Category": projectCat,
        
     }
+    alert(projectCat)
 
     $.ajax({
         url: actionUrl,
@@ -66,11 +67,46 @@ function projects(projectCat) { //den trexei
             console.log(errorThrown);
         }
     });
-
-   
-    
-
 }
+
+
+function fund(fundId, backerId, projectId) {
+    
+    actionMethod = "POST"
+    actionUrl = "/apibacker/addbackerfundingpackage"
+    //   
+   
+
+    sendData = {
+        "FundingPackageId": fundId,
+        "BackerId": backerId,
+        "ProjectId": projectId
+       
+    }
+ 
+
+    alert(JSON.stringify(sendData))
+    window.open("/Home/ProfileBacker?backerId=" + backerId, "_self")
+
+    $.ajax({    //EDW DEN MPAINEI STH SUCCESS
+        url: actionUrl,
+        dataType: 'json',
+        type: actionMethod,
+        data: JSON.stringify(sendData),
+        contentType: 'application/json',
+        processData: false,
+        success: function (data, textStatus, jQxhr) {
+            $('#responseDiv').html(JSON.stringify(data));
+
+            alert('You have successfully add fund')
+            window.open("/Home/ProfileBacker?backerId=" + backerId, "_self")
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            console.log(errorThrown);
+        }
+    });
+}
+
 
 function createpackage(ProjectId) {
 
@@ -145,6 +181,16 @@ function createProject(projectcreatorid) {
 function ProfileToAddProject(projCreatorId)
 {
     window.open("/Home/AddProject?projCreatorId=" + projCreatorId, "_self");
+}
+
+function ShowFundingPackages(backerId, projectId) {
+ 
+    
+    window.open("/Home/Fund?projectId=" + projectId + "&backerId=" + backerId, "_self");
+}
+
+function ShowAlProjects(backerId) {
+    window.open("/Home/Projects?backerId=" + backerId, "_self");
 }
 
 function addpackage(ProjectId) {

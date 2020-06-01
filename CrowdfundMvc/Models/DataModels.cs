@@ -8,9 +8,11 @@ namespace CrowdfundMvc.Models
 {
     public class ProjectModel
     {
+        public int FundingPackageId { get; set; }
         public List<FundingPackage> FundingPackages { get; set; }
         public ProjectCreator ProjectCreator { get; set; }
         public List<Project> Projects { get; set; }
+        public int BackerId { get; set; }
         public int ProjectId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
@@ -20,6 +22,18 @@ namespace CrowdfundMvc.Models
         public string Category { get; set; }
         public bool Active { get; set; }
     }
+
+    public class FundModel
+    {
+        public List<FundingPackage> FundingPackages { get; set; }
+        public Backer Backer { get; set; }
+        public Project Project { get; set; }
+        public int FundingPackageId { get; set; }
+        
+
+
+    }
+
     public class ProjectCreatorModel
     {
         public int ProjectCreatorId { get; set; }

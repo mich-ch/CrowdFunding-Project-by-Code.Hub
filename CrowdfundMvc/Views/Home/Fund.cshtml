@@ -1,0 +1,37 @@
+﻿@model CrowdfundMvc.Models.FundModel
+@{
+    ViewData["Title"] = "Fund";
+}
+
+<h1>Fund</h1>
+
+<table id="resultTable" border="1"
+       style="color:darkslateblue;background-color:lightcyan"
+       cellpadding="1" cellspacing="1">
+    <tr>
+
+        <th>Reward</th>
+        <th>Price </th>
+        <th>Project</th>
+
+
+    </tr>
+    @{
+        //razor syntax
+        foreach (var fundPack in Model.FundingPackages)
+        {
+        <tr id="cusTable@(fundPack.Id)">
+
+
+            <td> @fundPack.Reward </td>
+            <td> @fundPack.Price</td>
+            <td> @fundPack.Project.Title</td>
+
+            <td> <a href="#" onclick="fund(@fundPack.Id, @Model.Backer.Id, @Model.Project.Id)"> Fund</a></td>
+
+            @*fundId, backerId, projectId*@
+
+        </tr>
+        }
+    }
+</table>

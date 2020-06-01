@@ -8,5 +8,6 @@ namespace CrowdfundApp.Options
     {
         public int BackerId { get; set; }
         public int FundingPackageId { get; set; }
+        public int ProjectId { get; set; }
     }
 }

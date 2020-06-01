@@ -143,6 +143,23 @@ namespace CrowdfundMvc.Controllers
             return View(pj);
         }
 
+        [HttpGet("Fund")]
+        public IActionResult Fund([FromQuery] int projectId, int backerId)
+        {
+            List<FundingPackage> fundingsPackage = projectCreatorManager.ShowFundingPackageByProjectId(projectId);
+            Backer backer = db.Backers.Find(backerId);
+            Project project = db.Projects.Find(projectId);
+            
+            FundModel fundPack = new FundModel    //prepei na orisoume fundModel
+            {
+                 FundingPackages = fundingsPackage,
+                  Backer = backer,
+                  Project = project
+            };
+
+            return View(fundPack);
+        }
+
         [HttpGet("AddFundingPackage")]
         public IActionResult AddFundingPackage([FromQuery] int ProjectId)
         {
@@ -155,11 +172,13 @@ namespace CrowdfundMvc.Controllers
         }
 
         [HttpGet("Projects")]
-        public IActionResult Projects()
+        public IActionResult Projects([FromQuery] int backerId)
         {
+          
             ProjectModel allProjects = new ProjectModel
             {
-                Projects = backermanager.ShowAllProjects()
+                Projects = backermanager.ShowAllProjects(),
+                BackerId = backerId
             };
             return View(allProjects);
         }
@@ -179,7 +198,8 @@ namespace CrowdfundMvc.Controllers
         {
             ProjectModel allProjects = new ProjectModel
             {
-                Projects = backermanager.ShowProjectsByCategory(projectCat)
+                Projects = backermanager.ShowProjectsByCategory(projectCat),
+                Category = projectCat
             };
             return View(allProjects);
         }
