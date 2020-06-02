@@ -36,7 +36,27 @@ namespace CrowdfundApp.Services
             db.SaveChanges();
             return project;
         }
-        
+
+        public Project Update(ProjectOption projOption, int projectId)
+        {
+
+            Project project = db.Projects.Find(projectId);
+
+            if (projOption.Category != null)
+                project.Category = projOption.Category;
+            if (projOption.Title != null)
+                project.Title = projOption.Title;
+            if (projOption.Description != null)
+                project.Description = projOption.Description;
+            if (projOption.StatusUpdate != null)
+                project.StatusUpdate = projOption.StatusUpdate;
+            if (projOption.Goal != null)
+                project.Goal = projOption.Goal ?? 0;
+            
+
+            db.SaveChanges();
+            return project;
+        }
 
         public List<FundingPackage> ShowFundingPackages(int projectId)  //ok
         {

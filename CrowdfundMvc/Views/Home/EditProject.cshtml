@@ -1,0 +1,48 @@
+﻿@model CrowdfundMvc.Models.ProjectModel
+@{
+    ViewData["Title"] = "Project Update";
+}
+
+    <h1 align="center">Project Update </h1>
+
+<form id="projectDataForm">
+    <table align="center">
+        <tr>
+            <td>Title	</td>
+            <td>
+                <input type="text" id="Title" name="Title"
+                       value="@Model.Title" placeholder="Title">
+            </td>
+        </tr>
+        <tr>
+            <td>Description	</td>
+            <td>
+                <input type="text" id="Description" name="Description"
+                       value="@Model.Description" placeholder="Description">
+            </td>
+        </tr>
+        <tr>
+            <td>Goal	</td>
+            <td>
+                <input type="text" id="Goal" name="Goal"
+                       value="@Model.Goal"
+                       placeholder="Goal">
+            </td>
+        </tr>
+        <tr>
+            <td>StatusUpdate	</td>
+            <td>
+                <input type="text" id="StatusUpdate" name="StatusUpdate"
+                       value="@Model.StatusUpdate"
+                       placeholder="StatusUpdate">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" onclick="doUpdateProject(@Model.ProjectId, @Model.ProjectCreator.Id)"
+                       value="Submit">
+    </table>
+
+</form>
+
+<div id="responseDiv">   </div>

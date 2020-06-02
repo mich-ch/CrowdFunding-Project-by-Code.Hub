@@ -20,8 +20,11 @@ namespace CrowdfundMvc.Models
         public decimal TotalFundings { get; set; }
         public decimal Goal { get; set; }
         public string Category { get; set; }
+        public int ProjectCreatorId { get; set; }
         public bool Active { get; set; }
     }
+
+
 
     public class FundModel
     {

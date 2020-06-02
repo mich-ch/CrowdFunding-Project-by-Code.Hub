@@ -39,13 +39,60 @@
     });
 }
 
+function editProject(projectId, projectreatorid) {
+    
+    alert(projectId);
+    alert(projectreatorid);
+    window.open("/Home/EditProject?projectId=" + projectId + "&projectCreatorId=" + projectreatorid, "_self")
 
-function myFunction() {
+}
+
+function myFunction(backerId) {
     var x = document.getElementById("mySelect").value;
-    window.open("/Home/ProjectsByCategory?projectCat=" + x, "_self");
+    window.open("/Home/ProjectsByCategory?projectCat=" + x + "&backerId=" + backerId, "_self");
+}
+
+function search( backerId) {
+    var x = document.getElementById("srch").value;
+    window.open("/Home/SearchProject?projectTitle=" + x + "&backerId=" + backerId, "_self");
 }
 
 
+
+function doUpdateProject(projectId, projectreatorid) {
+    actionMethod = "PUT"
+    actionUrl = "/apiprojectcreator/updateproject"
+    sendData = {
+        "Category": $('#Category').val(),
+        "ProjectCreatorId": projectreatorid,
+        "Title": $('#Title').val(),
+        "Description": $('#Description').val(),
+        "StatusUpdate": $('#StatusUpdate').val(),
+        "ProjectId": projectId,
+        "Goal": parseFloat($('#Goal').val())
+
+    }
+
+    $.ajax({
+        url: actionUrl,
+        dataType: 'json',
+        type: actionMethod,
+        data: JSON.stringify(sendData),
+
+        contentType: 'application/json',
+        processData: false,
+        success: function (data, textStatus, jQxhr) {
+            $('#responseDiv').html("The update has been made successfully");
+            window.open("/Home/ProfileProject?ProjectId=" + projectId + "&projectCreatorId=" + projectreatorid, "_self")
+
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            console.log(errorThrown);
+        }
+    });
+
+
+}
 
 
 function fund(fundId, backerId, projectId) {

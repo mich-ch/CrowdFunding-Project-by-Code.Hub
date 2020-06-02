@@ -60,7 +60,7 @@
         <tr>
             <td >
                 <a href="#" id="prod@(prj.Id)" value="@(prj.Id)"
-                   onclick="ProfileProject()">
+                   onclick="ProfileProject(@prj.Id, @Model.ProjectCreatorId)">
                     @prj.Title
                 </a>
             </td>
@@ -72,25 +72,25 @@
             </td>
             <td>
                 <a href="#" id="prod@(prj.Id)" value="@(prj.Id)"
-                   onclick="ProfileProject()">
+                    onclick="ProfileProject(@prj.Id, @Model.ProjectCreatorId)">
                     @prj.StatusUpdate
                 </a>
             </td>
             <td>
                 <a href="#" id="prod@(prj.Id)" value="@(prj.Id)"
-                   onclick="ProfileProject()">
+                   onclick="ProfileProject(@prj.Id, @Model.ProjectCreatorId)">
                     @prj.TotalFundings
                 </a>
             </td>
             <td>
                 <a href="#" id="prod@(prj.Id)" value="@(prj.Id)"
-                   onclick="ProfileProject()">
+                    onclick="ProfileProject(@prj.Id, @Model.ProjectCreatorId)">
                     @prj.Goal
                 </a>
             </td>
             <td>
                 <a href="#" id="prod@(prj.Id)" value="@(prj.Id)"
-                   onclick="ProfileProject()">
+                    onclick="ProfileProject(@prj.Id, @Model.ProjectCreatorId)">
                     @prj.Category
                 </a>
             </td>

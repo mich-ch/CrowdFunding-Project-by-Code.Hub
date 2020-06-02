@@ -106,6 +106,25 @@ namespace CrowdfundMvc.Controllers
             return View(pr);
         }
 
+        [HttpGet("EditProject")]
+        public IActionResult EditProject([FromQuery] int projectId, int projectCreatorId)
+        {
+
+            Project project = projectManager.FindProjectById(projectId);
+            ProjectCreator projCreator = db.ProjectCreators.Find(projectCreatorId);
+            ProjectModel pr = new ProjectModel
+            {
+                ProjectId = projectId,
+                ProjectCreator = projCreator,    //  se 2o xrono tha to doume
+                Title = project.Title,
+                Description = project.Description,
+                StatusUpdate = project.StatusUpdate,
+                Goal = project.Goal
+            };
+
+            return View(pr);
+        }
+
 
         [HttpGet("ProfileBacker")]
         public IActionResult ProfileBacker([FromQuery] int backerId)
@@ -197,12 +216,27 @@ namespace CrowdfundMvc.Controllers
         }
 
         [HttpGet("ProjectsByCategory")] // na mpei sthn projects
-        public IActionResult ProjectsByCategory([FromQuery] string projectCat)
+        public IActionResult ProjectsByCategory([FromQuery] string projectCat, int backerId)
         {
             ProjectModel allProjects = new ProjectModel
             {
                 Projects = backermanager.ShowProjectsByCategory(projectCat),
-                Category = projectCat
+                Category = projectCat,
+                 BackerId = backerId
+            };
+            return View(allProjects);
+        }
+
+        [HttpGet("SearchProject")] // na mpei sthn projects
+        public IActionResult SearchProject([FromQuery] string projectTitle, int backerId)
+        {
+            
+            List<Project> projects = backermanager.TextProjectsSearch(projectTitle);
+            ProjectModel allProjects = new ProjectModel
+            {
+                Projects = projects,
+                Title = projectTitle,
+                BackerId = backerId
             };
             return View(allProjects);
         }

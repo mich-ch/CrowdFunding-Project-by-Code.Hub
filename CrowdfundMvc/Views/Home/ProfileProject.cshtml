@@ -20,6 +20,7 @@
         <th>Goal</th>
         <th>Category</th>
         <th>Active</th>
+        <th>Edit</th>
 
     </tr>
     @{
@@ -35,6 +36,9 @@
             <td> @Model.Goal</td>
             <td> @Model.Category</td>
             <td> @Model.Active</td>
+            <td>
+                <a href="#" onclick="editProject(@Model.ProjectId, @Model.ProjectCreator.Id)"> Edit</a>
+            </td>
 
         </tr>
     }
@@ -55,15 +59,18 @@
         {
       
 
-            <tr>
-                <td>
-                    @bfp.Reward
-                </td>
+        <tr>
+            <td>
+                @bfp.Reward
+            </td>
 
-                <td>
-                    @bfp.Price
-                </td>
-            </tr>
+            <td>
+                @bfp.Price
+            </td>
+
+            <td>
+           
+        </tr>
 
         
         }

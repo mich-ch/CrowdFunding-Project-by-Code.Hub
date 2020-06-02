@@ -31,6 +31,26 @@ namespace CrowdfundMvc.Controllers
             return projectCreatorManager.CreateProjectCreator(projectCreatorOption);
         }
 
+        [HttpPut("updateproject")]
+        public bool Updateproject([FromBody] ProjectModel proj)
+        {
+
+
+            ProjectOption pj = new ProjectOption
+            {
+                Category = proj.Category,
+                ProjectCreatorId = proj.ProjectCreatorId,
+                Title = proj.Title,
+                Description = proj.Description,
+                StatusUpdate = proj.StatusUpdate,
+                ProjectId = proj.ProjectId,
+                Goal = proj.Goal
+            };
+            
+            projectManager.Update(pj, proj.ProjectId);
+            return true;
+        }
+
         [HttpPost("addproject")]
         public int AddProject([FromBody] ProjectOption projectOption)
         {
