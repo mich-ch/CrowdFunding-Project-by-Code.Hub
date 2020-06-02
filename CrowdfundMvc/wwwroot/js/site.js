@@ -221,6 +221,31 @@ function ProfileToAddProject(projCreatorId)
     window.open("/Home/AddProject?projCreatorId=" + projCreatorId, "_self");
 }
 
+function ProjectCreator() {
+    window.open("/Home/ProjectCreator", "_self");
+}
+
+function Backer() {
+    window.open("/Home/Backer", "_self");
+}
+
+function RegisterCreator() {
+    window.open("/Home/AddProjectCreator", "_self");
+}
+
+function LoginCreator() {
+    window.open("/Home/Login", "_self");
+}
+
+function RegisterBacker() {
+    window.open("/Home/AddBacker", "_self");
+}
+
+function LoginBacker() {
+    window.open("/Home/LoginBacker", "_self");
+}
+
+
 function ShowFundingPackages(backerId, projectId) {
     alert(backerId);
     alert(projectId);
@@ -251,6 +276,8 @@ function ProfileToShowTrendingProject(backerId)
 {
     window.open("/Home/TrendsProjects?backerId=" + backerId, "_self");
 }
+
+
 $('#loginButton').click(
     function () {
 

@@ -60,7 +60,17 @@ namespace CrowdfundMvc.Controllers
             return View();
         }
 
+        [HttpGet("ProjectCreator")]
+        public IActionResult ProjectCreator()
+        {
+            return View();
+        }
 
+        [HttpGet("Backer")]
+        public IActionResult Backer()
+        {
+            return View();
+        }
 
         [HttpGet("ProfileProjectCreator")]
         public IActionResult ProfileProjectCreator([FromQuery] int projectCreatorId)
@@ -232,11 +242,12 @@ namespace CrowdfundMvc.Controllers
         }
 
         [HttpGet("TrendsProjects")]
-        public IActionResult TrendsProjects()
+        public IActionResult TrendsProjects(int backerId)
         {
             ProjectModel allProjects = new ProjectModel
             {
-                Projects = backermanager.ShowTrendsProjects()
+                Projects = backermanager.ShowTrendsProjects(),
+                BackerId = backerId
             };
             return View(allProjects);
         }
