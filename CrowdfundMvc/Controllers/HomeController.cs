@@ -82,10 +82,10 @@ namespace CrowdfundMvc.Controllers
         }
 
         [HttpGet("ProfileProject")]
-        public IActionResult ProfileProject([FromQuery] int projectId)
+        public IActionResult ProfileProject([FromQuery] int projectId, int projectCreatorId)
         {
             List<FundingPackage> fundingsPackage = projectCreatorManager.ShowFundingPackageByProjectId(projectId);
-
+            ProjectCreator projCreator = db.ProjectCreators.Find(projectCreatorId);
             Project project = projectManager.FindProjectById(projectId);
 
             //Project project = db.Projects.Find(projectId);
@@ -93,7 +93,7 @@ namespace CrowdfundMvc.Controllers
             {
                  FundingPackages = fundingsPackage,
                 ProjectId = projectId,
-                ProjectCreator = project.ProjectCreator,    //  se 2o xrono tha to doume
+                ProjectCreator = projCreator,    //  se 2o xrono tha to doume
                 Title = project.Title,
                 Description = project.Description,
                 StatusUpdate = project.StatusUpdate,
@@ -161,11 +161,14 @@ namespace CrowdfundMvc.Controllers
         }
 
         [HttpGet("AddFundingPackage")]
-        public IActionResult AddFundingPackage([FromQuery] int ProjectId)
+        public IActionResult AddFundingPackage([FromQuery] int ProjectId, int projectCreatorId)
         {
+            ProjectCreator projCreator = db.ProjectCreators.Find(projectCreatorId);
+
             ProjectModel project = new ProjectModel
             {
-                ProjectId = ProjectId
+                ProjectId = ProjectId,
+                ProjectCreator = projCreator
             };
 
             return View(project);

@@ -27,7 +27,7 @@
         <tr>
 
             <td> @Model.ProjectId</td>
-            <td> @Model.ProjectCreator</td>
+            <td> @Model.ProjectCreator.FullName</td>
             <td> @Model.Title </td>
             <td> @Model.Description</td>
             <td> @Model.StatusUpdate</td>
@@ -71,6 +71,6 @@
 </table>
 
     <button type="button"
-            href="#" onclick="addpackage(@Model.ProjectId)">
+            href="#" onclick="addpackage(@Model.ProjectId, @Model.ProjectCreator.Id)">
         Create Funding Package
     </button>

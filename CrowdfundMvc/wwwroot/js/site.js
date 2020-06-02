@@ -40,34 +40,12 @@
 }
 
 
-function projects(projectCat) { //den trexei 
-    actionMethod = "GET"
-    actionUrl = "/Home/Projects"
-    sendData = {
-        
-        "Category": projectCat,
-       
-    }
-    alert(projectCat)
-
-    $.ajax({
-        url: actionUrl,
-        dataType: 'json',
-        type: actionMethod,
-        data: JSON.stringify(sendData),
-        contentType: 'application/json',
-        processData: false,
-        success: function (data, textStatus, jQxhr) {
-            $('#responseDiv').html(JSON.stringify(data));
-
-            alert('You have successfully add project')
-            window.open("/Home/ProjectsByCategory?projectCat=" + projectCat, "_self");
-        },
-        error: function (jqXhr, textStatus, errorThrown) {
-            console.log(errorThrown);
-        }
-    });
+function myFunction() {
+    var x = document.getElementById("mySelect").value;
+    window.open("/Home/ProjectsByCategory?projectCat=" + x, "_self");
 }
+
+
 
 
 function fund(fundId, backerId, projectId) {
@@ -86,7 +64,7 @@ function fund(fundId, backerId, projectId) {
  
 
     alert(JSON.stringify(sendData))
-    window.open("/Home/ProfileBacker?backerId=" + backerId, "_self")
+    //window.open("/Home/ProfileBacker?backerId=" + backerId, "_self")
 
     $.ajax({    //EDW DEN MPAINEI STH SUCCESS
         url: actionUrl,
@@ -108,7 +86,7 @@ function fund(fundId, backerId, projectId) {
 }
 
 
-function createpackage(ProjectId) {
+function createpackage(ProjectId, ProjectCreatorId) {
 
 
     actionMethod = "POST"
@@ -134,7 +112,9 @@ function createpackage(ProjectId) {
             $('#responseDiv').html(JSON.stringify(data));
 
             alert('You have successfully add package')
-            window.open("/Home/ProfileProject?ProjectId=" + ProjectId, "_self")
+            window.open("/Home/ProfileProject?ProjectId=" + ProjectId + "&projectCreatorId=" + ProjectCreatorId, "_self")
+         
+
         },
         error: function (jqXhr, textStatus, errorThrown) {
             console.log(errorThrown);
@@ -193,13 +173,18 @@ function ShowAlProjects(backerId) {
     window.open("/Home/Projects?backerId=" + backerId, "_self");
 }
 
-function addpackage(ProjectId) {
-    window.open("/Home/AddFundingPackage?ProjectId=" + ProjectId, "_self");
+function addpackage(ProjectId, ProjectCreatorId) {
+    window.open("/Home/AddFundingPackage?ProjectId=" + ProjectId + "&projectCreatorId=" + ProjectCreatorId, "_self");
+    
+
 }
 
-function ProfileProject(projectId) {
+function ProfileProject(projectId, projectCreatorId) {
+    //edw
     
-    window.open("/Home/ProfileProject?ProjectId=" + projectId, "_self");
+    //window.open("/Home/ProfileProject?projectCreatorId=" + projectId, "_self");
+    window.open("/Home/ProfileProject?projectId=" + projectId + "&projectCreatorId=" + projectCreatorId, "_self");
+
     
 }
 

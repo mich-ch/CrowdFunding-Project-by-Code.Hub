@@ -7,37 +7,19 @@
 <h1>Projects</h1>
 
 @*<button type="button"
-        href="#" onclick="ProfileToShowTrendingProject(@Model.)">
-    Show Trending Projects
-</button>*@
+            href="#" onclick="ProfileToShowTrendingProject(@Model.)">
+        Show Trending Projects
+    </button>*@
 
+<select id="mySelect">
+    <option>Sports</option>
+    <option>Fashion</option>
+    <option>Education</option>
+    <option>IT</option>
+    <option>Other</option>
+</select>
 
-
-    <form id="Category">
-        <table align="center">
-
-            <tr>
-                <td>Category	</td>
-                <td>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td>
-                    <select id="Category" name="Category">
-                        <option value="Sports">Sports</option>
-                        <option value="Fashion">Fashion</option>
-                        <option value="Education">Education</option>
-                        <option value="IT">IT</option>
-                    </select>
-                </td>
-                <td>
-                    <input type="submit" onclick="projects(@Model.Category)"
-                           value="Submit">
-        </table>
-
-    </form>
+<button onclick="myFunction()">Try it</button>
 
 <table id="resultTable" border="1"
        style="color:darkslateblue;background-color:lightcyan"
@@ -57,19 +39,19 @@
         //razor syntax
         foreach (var project in Model.Projects)
         {
-        <tr id="cusTable@(project.Id)">
+            <tr id="cusTable@(project.Id)">
 
-            <td> @project.Title</td>
-            <td> @project.Description </td>
-            <td> @project.StatusUpdate</td>
-            <td> @project.TotalFundings</td>
-            <td> @project.Goal</td>
-            <td> @project.Category</td>
-            <td> <a href="#" onclick="ShowFundingPackages(@Model.BackerId, @project.Id)"> ShowFundingPackages</a></td>
+                <td> @project.Title</td>
+                <td> @project.Description </td>
+                <td> @project.StatusUpdate</td>
+                <td> @project.TotalFundings</td>
+                <td> @project.Goal</td>
+                <td> @project.Category</td>
+                <td> <a href="#" onclick="ShowFundingPackages(@Model.BackerId, @project.Id)"> ShowFundingPackages</a></td>
 
 
 
-        </tr>
+            </tr>
         }
     }
 </table>

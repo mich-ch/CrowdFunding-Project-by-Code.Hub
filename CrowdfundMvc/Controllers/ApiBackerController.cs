@@ -26,10 +26,10 @@ namespace CrowdfundMvc.Controllers
         }
 
         [HttpPost("addbackerfundingpackage")]
-        public BackerFundingPackage Addbackerfundingpackage([FromBody] BackerFundingPackagetOption bfpO)
+        public int Addbackerfundingpackage([FromBody] BackerFundingPackagetOption bfpO)
         {
             FundingPackage fundPack = backerManager.ShowFundingPackageById(bfpO.FundingPackageId);
-            return backerManager.Fund(fundPack, bfpO.BackerId, bfpO.ProjectId);
+            return backerManager.Fund(fundPack, bfpO.BackerId, bfpO.ProjectId).Id;
         }
 
 

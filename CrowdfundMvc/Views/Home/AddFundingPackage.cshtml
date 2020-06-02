@@ -14,7 +14,7 @@
         <tr><td>Reward	</td>  <td> <input type="text" id="Reward" name="Reward">	</td>  </tr>
         <tr>
             <td>
-                <input type="button" onclick="createpackage(@Model.ProjectId)"
+                <input type="button" onclick="createpackage(@Model.ProjectId, @Model.ProjectCreator.Id)"
                        value="Submit">
             </td>
         </tr>
