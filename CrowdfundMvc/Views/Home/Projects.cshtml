@@ -46,19 +46,25 @@
         //razor syntax
         foreach (var project in Model.Projects)
         {
-            <tr id="cusTable@(project.Id)">
+        <tr id="cusTable@(project.Id)">
 
-                <td> @project.Title</td>
-                <td> @project.Description </td>
-                <td> @project.StatusUpdate</td>
-                <td> @project.TotalFundings</td>
-                <td> @project.Goal</td>
-                <td> @project.Category</td>
-                <td> <a href="#" onclick="ShowFundingPackages(@Model.BackerId, @project.Id)"> ShowFundingPackages</a></td>
+            
+
+            <td> <a href="#" id="prod@(project.Id)" value="@(project.Id)"
+                   onclick="ProfileProjectBacker(@project.Id, @Model.BackerId)">
+                    @project.Title
+                </a>
+            </td>
+            <td> @project.Description </td>
+            <td> @project.StatusUpdate</td>
+            <td> @project.TotalFundings</td>
+            <td> @project.Goal</td>
+            <td> @project.Category</td>
+            <td> <a href="#" onclick="ShowFundingPackages(@Model.BackerId, @project.Id)"> ShowFundingPackages</a></td>
 
 
 
-            </tr>
+        </tr>
         }
     }
 </table>

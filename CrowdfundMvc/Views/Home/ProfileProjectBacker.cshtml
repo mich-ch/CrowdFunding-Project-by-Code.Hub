@@ -1,0 +1,47 @@
+﻿@model CrowdfundMvc.Models.ProjectModel
+@{
+    ViewData["Title"] = "ProfileProject";
+}
+
+
+<h1>Profile Project</h1>
+
+<table id="resultTable" border="1"
+       style="color:darkslateblue;background-color:lightcyan"
+       cellpadding="1" cellspacing="1">
+    <tr>
+
+        <th>ProjectId</th>
+        
+        <th>Title </th>
+        <th>Description</th>
+        <th>StatusUpdate</th>
+        <th>TotalFundings</th>
+        <th>Goal</th>
+        <th>Category</th>
+        <th>Active</th>
+        <th>Show</th>
+        
+
+    </tr>
+    @{
+        //razor syntax
+        <tr>
+
+            <td> @Model.ProjectId</td>
+            
+            <td> @Model.Title </td>
+            <td> @Model.Description</td>
+            <td> @Model.StatusUpdate</td>
+            <td> @Model.TotalFundings</td>
+            <td> @Model.Goal</td>
+            <td> @Model.Category</td>
+            <td> @Model.Active</td>
+
+           
+            <td> <a href="#" onclick="ShowFundingPackages(@Model.BackerId, @Model.ProjectId)"> ShowFundingPackages</a></td>
+
+        </tr>
+    }
+
+</table>

@@ -47,6 +47,17 @@ function editProject(projectId, projectreatorid) {
 
 }
 
+function ProfileProjectBacker(projectId, backerid) {
+
+    alert(projectId);
+    
+    alert(backerid);
+
+
+    window.open("/Home/ProfileProjectBacker?projectId=" + projectId  + "&backerId=" + backerid, "_self")
+
+}
+
 function myFunction(backerId) {
     var x = document.getElementById("mySelect").value;
     window.open("/Home/ProjectsByCategory?projectCat=" + x + "&backerId=" + backerId, "_self");
@@ -211,7 +222,8 @@ function ProfileToAddProject(projCreatorId)
 }
 
 function ShowFundingPackages(backerId, projectId) {
- 
+    alert(backerId);
+    alert(projectId);
     
     window.open("/Home/Fund?projectId=" + projectId + "&backerId=" + backerId, "_self");
 }
