@@ -3,7 +3,7 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Backer</h1>
+    <h1 class="display-4">Project Creator</h1>
     <p>
         Learn about
         <a href="https://docs.microsoft.com/aspnet/core">
@@ -12,13 +12,53 @@
     </p>
 </div>
 
+<head>
+    <style>
+        div.one {
+            margin-top: 40px;
+            text-align: center;
+        }
 
-<button type="button"
-        href="#" onclick="RegisterBacker()">
-    Register
-</button>
+        .button {
+            background-color: lightslategrey;
+            border: none;
+            color: white;
+            padding: 20px 150px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 5px 5px;
+            cursor: pointer;
+            -webkit-transition-duration: 0.4s;
+            transition-duration: 0.4s;
+        }
 
-<button type="button"
-        href="#" onclick="LoginBacker()">
-    Login
-</button>
+        .button2:hover {
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+
+        .button2:hover {
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="one">
+        <h2>Enjoy a Special Experience</h2>
+        <p>If you do not have an account make a Register, otherwise make Sign-In</p>
+
+        <button class="button button2" type="button"
+                href="#" onclick="RegisterBacker()">
+            Register
+        </button>
+
+        <button class="button button2" type="button"
+                href="#" onclick="LoginBacker()">
+            Sign-In
+        </button>
+
+    </div>
+</body>

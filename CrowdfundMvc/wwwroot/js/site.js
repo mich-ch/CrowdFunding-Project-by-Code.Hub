@@ -68,7 +68,14 @@ function search( backerId) {
     window.open("/Home/SearchProject?projectTitle=" + x + "&backerId=" + backerId, "_self");
 }
 
-
+$(document).ready(function () {
+    $("#srch").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+});
 
 function doUpdateProject(projectId, projectreatorid) {
     actionMethod = "PUT"
@@ -447,7 +454,7 @@ function submitBackerToServer() {
 
 
 //function addProject() {
-//    elementid = this.id
+//    elementid = this.idsearc
 //    projectCreatorId = this.value
 //    //basketId = $("#productsList").value
 //    actionMethod = "POST"

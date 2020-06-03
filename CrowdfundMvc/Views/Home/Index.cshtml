@@ -4,19 +4,62 @@
 
 <div class="text-center">
     <h1 class="display-4">CrowFundProject By Team4</h1>
-    <p>Learn about 
+    <p>
+        Learn about
         <a href="https://docs.microsoft.com/aspnet/core">
-        building Web apps with ASP.NET Core
-        </a>.</p>
+            building Web apps with ASP.NET Core
+        </a>.
+    </p>
 </div>
 
 
-<button type="button"
-        href="#" onclick="ProjectCreator()">
-    Project Creator
-</button>
+<head>
+    <style>
+        div.one {
+            margin-top: 40px;
+            text-align: center;
+        }
 
-<button type="button"
-        href="#" onclick="Backer()">
-    Backer
-</button>
+        .button {
+            background-color: lightslategrey;
+            border: none;
+            color: white;
+            padding: 20px 150px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 5px 5px;
+            cursor: pointer;
+            -webkit-transition-duration: 0.4s;
+            transition-duration: 0.4s;
+        }
+
+        .button2:hover {
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+
+        .button2:hover {
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="one">
+        <h2>Choose Your Role</h2>
+        <p></p>
+
+        <button class="button button2" type="button"
+                href="#" onclick="ProjectCreator()">
+            Creator
+        </button>
+
+        <button class="button button2" type="button"
+                href="#" onclick="Backer()">
+            Backer
+        </button>
+
+    </div>
+</body>
