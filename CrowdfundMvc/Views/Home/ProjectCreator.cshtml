@@ -2,63 +2,66 @@
     ViewData["Title"] = "Project Creator";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Project Creator</h1>
-    <p>
-        Learn about
-        <a href="https://docs.microsoft.com/aspnet/core">
-            building Web apps with ASP.NET Core
-        </a>.
-    </p>
+<style>
+    .imgbg {
+        background-image: url(https://images.pexels.com/photos/37728/pexels-photo-37728.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin: 0;
+        top: 0;
+        padding-top: 15%;
+        padding-bottom: 15%;
+        font-family: 'Permanent Marker', cursive;
+        color: white;
+        font-size: 59px;
+    }
+</style>
+
+
+
+
+
+
+<div class="imgbg">
+    <div class="text-center">
+        <p>Creator</p>
+    </div>
+</div>
+   
+<div class="text-center" style="margin-top: -50px;">
+    <div class="row">
+        <div class="col">
+        </div>
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Register</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" onclick="RegisterCreator()" class="btn btn-primary">Register</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Login</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" onclick="LoginCreator()" class="btn btn-primary">Login</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+        </div>
+    </div>
 </div>
 
-<head>
-    <style>
-        div.one {
-            margin-top: 40px;
-            text-align: center;
-        }
-
-        .button {
-            background-color: lightslategrey;
-            border: none;
-            color: white;
-            padding: 20px 150px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 20px;
-            margin: 5px 5px;
-            cursor: pointer;
-            -webkit-transition-duration: 0.4s;
-            transition-duration: 0.4s;
-        }
-
-        .button2:hover {
-            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-        }
-
-        .button2:hover {
-            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-        }
-    </style>
-</head>
 
 
-<body>
-    <div class="one">
-        <h2>Enjoy a Special Experience</h2>
-        <p>If you do not have an account make a Register, otherwise make Sign-In</p>
 
-        <button class="button button2" type="button"
-                href="#" onclick="RegisterCreator()">
-            Register
-        </button>
 
-        <button class="button button2" type="button"
-                href="#" onclick="LoginCreator()">
-            Sign-In
-        </button>
 
-    </div>
-</body>
+
+
+
+
+

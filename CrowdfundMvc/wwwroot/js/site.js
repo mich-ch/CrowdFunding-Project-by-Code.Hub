@@ -39,6 +39,10 @@
     });
 }
 
+function GoHome() {
+    window.open("/Home/Index", "_self")
+}
+
 function editProject(projectId, projectreatorid) {
     
     alert(projectId);
