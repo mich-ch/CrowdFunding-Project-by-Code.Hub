@@ -236,6 +236,19 @@ function ProjectCreator() {
     window.open("/Home/ProjectCreator", "_self");
 }
 
+function ContractStelios()
+{
+    window.open("https://www.linkedin.com/in/chatzikechagias/");
+}
+
+function ContractPaschalis() {
+    window.open("https://www.linkedin.com/in/paschalis-madikas-b34585b8/");
+}
+
+function ContractMichalis() {
+    window.open("https://www.linkedin.com/in/michalis-chatziparaskevas/");
+}
+
 function Backer() {
     window.open("/Home/Backer", "_self");
 }

@@ -48,6 +48,12 @@ namespace CrowdfundMvc.Controllers
             return View();
         }
 
+        [HttpGet("TheTeam")]
+        public IActionResult TheTeam()
+        {
+            return View();
+        }
+
         [HttpGet("Privacy")]
         public IActionResult Privacy()
         {
