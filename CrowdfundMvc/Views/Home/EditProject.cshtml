@@ -3,46 +3,41 @@
     ViewData["Title"] = "Project Update";
 }
 
-    <h1 align="center">Project Update </h1>
+    <h1 align="center" style="padding-top: 100px;
+    margin-top: auto;">Project Update </h1>
 
-<form id="projectDataForm">
-    <table align="center">
-        <tr>
-            <td>Title	</td>
-            <td>
-                <input type="text" id="Title" name="Title"
-                       value="@Model.Title" placeholder="Title">
-            </td>
-        </tr>
-        <tr>
-            <td>Description	</td>
-            <td>
-                <input type="text" id="Description" name="Description"
-                       value="@Model.Description" placeholder="Description">
-            </td>
-        </tr>
-        <tr>
-            <td>Goal	</td>
-            <td>
-                <input type="text" id="Goal" name="Goal"
-                       value="@Model.Goal"
-                       placeholder="Goal">
-            </td>
-        </tr>
-        <tr>
-            <td>StatusUpdate	</td>
-            <td>
-                <input type="text" id="StatusUpdate" name="StatusUpdate"
-                       value="@Model.StatusUpdate"
-                       placeholder="StatusUpdate">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input type="button" onclick="doUpdateProject(@Model.ProjectId, @Model.ProjectCreator.Id)"
-                       value="Submit">
-    </table>
 
+<form action="projectDataForm" style="
+    padding-top: 40px;">
+    <div class="form-group row">
+        <label for="Title" class="col-sm-2 col-form-label">Title</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="Title" value="@Model.Title" placeholder="Title">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="Description" class="col-sm-2 col-form-label">Description</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="Description" value="@Model.Description" placeholder="Description">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="Goal" class="col-sm-2 col-form-label">Goal</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="Goal" value="@Model.Goal" placeholder="Goal">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="StatusUpdate" class="col-sm-2 col-form-label">StatusUpdate</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="StatusUpdate" value="@Model.StatusUpdate" placeholder="StatusUpdate">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <input class="btn btn-primary" type="button" onclick="doUpdateProject(@Model.ProjectId, @Model.ProjectCreator.Id)" value="Submit">
+        </div>
+    </div>
 </form>
 
 <div id="responseDiv">   </div>
