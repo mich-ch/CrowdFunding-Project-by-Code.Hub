@@ -83,9 +83,32 @@ namespace CrowdfundMvc.Controllers
         {
             ProjectCreator projectCreator = projectCreatorManager.FindProjectCreator(projectCreatorId);
             List<Project> projects = projectCreatorManager.ShowProjectsByCreator(projectCreatorId);
+            List<Project> projTrends = backermanager.ShowTrendsProjects();
+            List<Project> Mytop = projects.OrderByDescending(o => o.TotalFundings).Take(5).ToList();
+
+            Project projectt = new Project
+            {
+                TotalFundings = 0,
+                Title = ""
+            };
+
+            if (projTrends.Count < 5)
+            {
+                for (int i = 0; i < 5; i++)
+                    Mytop.Add(projectt);
+            }
+            //1h periptwsi oxi null kai 3
+            if (Mytop.Count <5)
+            {
+                for (int i = 0; i < 5; i++)
+                    Mytop.Add(projectt);
+            }
+           
 
             ProjectCreatorModel pj = new ProjectCreatorModel
             {
+                 MyTop5 = Mytop,
+                TrendsProjects = projTrends,
                  Projects = projects,
                 ProjectCreatorId = projectCreatorId,
                 FullName=projectCreator.FullName,

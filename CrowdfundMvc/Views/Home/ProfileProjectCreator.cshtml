@@ -4,16 +4,16 @@
 }
 
 
-    <div style=" padding-bottom: 50px; font-family: 'Permanent Marker', cursive; color: #1b6ec2;" class="text-center">
-        <h1>Welcome @Model.FullName</h1>
+<div style=" padding-bottom: 50px; font-family: 'Permanent Marker', cursive; color: #1b6ec2;" class="text-center">
+    <h1>Welcome @Model.FullName</h1>
 
-    </div>
+</div>
 
 
 <div class="row">
     <div class="col-sm-3">
         <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="/Images/profileicon.png">
+            <img class="card-img-top" style="border-radius: 50%;" src="/Images/profileicon.png">
 
             <div class="card-body">
                 <h5 class="card-title">FullName: @Model.FullName</h5>
@@ -31,41 +31,127 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-8" style="margin-left: 20px">
-        <div class="card">
-            <table id="myTable" class="table table-hover">
-                <tr>
+    <div class="col-sm-8">
 
-                    <th>Title</th>
-                    <th>Description </th>
-                    <th>StatusUpdate</th>
-                    <th>TotalFundings</th>
-                    <th>Goal</th>
-                    <th>Category</th>
-                    @*<th>ShowFundingPackages</th>*@
-
-                </tr>
-                @{
-                    //razor syntax
-                    foreach (var project in Model.Projects)
-                    {
-                        <tr href="#" onclick="ProfileProject(@project.Id, @Model.ProjectCreatorId)" class='clickable-row' id="cusTable@(project.Id)">
-
-                            <td>@project.Title</td>
-                            <td> @project.Description </td>
-                            <td> @project.StatusUpdate</td>
-                            <td> @project.TotalFundings</td>
-                            <td> @project.Goal</td>
-                            <td> @project.Category</td>
-                        </tr>
-                    }
-                }
-            </table>
+        <div class="row">
+            <div class="col">
+                <div id="piechart"></div>
+            </div>
+            <div class="col">
+                <div id="columnchart_values"></div>
+            </div>
         </div>
-    </div>
+        
+      
+        <div class="col">
+            <div class="card">
+                <table id="myTable" class="table table-hover">
+                    <tr>
+
+                        <th>Title</th>
+                        <th>Description </th>
+                        <th>StatusUpdate</th>
+                        <th>TotalFundings</th>
+                        <th>Goal</th>
+                        <th>Category</th>
+                        @*<th>ShowFundingPackages</th>*@
+
+                    </tr>
+                    @{
+                        //razor syntax
+                        foreach (var project in Model.Projects)
+                        {
+                            <tr href="#" onclick="ProfileProject(@project.Id, @Model.ProjectCreatorId)" class='clickable-row' id="cusTable@(project.Id)">
+
+                                <td>@project.Title</td>
+                                <td> @project.Description </td>
+                                <td> @project.StatusUpdate</td>
+                                <td> @project.TotalFundings</td>
+                                <td> @project.Goal</td>
+                                <td> @project.Category</td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        </div>
 
 
     </div>
 
 
+</div>
 
+
+
+<div id="piechart"></div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+    // Load google charts
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    // Draw the chart and set the chart values
+    function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+            ['Task', 'Hours per Day'],
+            ['@Model.TrendsProjects[0].Title', @Convert.ToInt32(@Model.TrendsProjects[0].TotalFundings)],
+            ['@Model.TrendsProjects[1].Title',@Convert.ToInt32(@Model.TrendsProjects[1].TotalFundings)],
+            ['@Model.TrendsProjects[2].Title', @Convert.ToInt32(@Model.TrendsProjects[2].TotalFundings)],
+            ['@Model.TrendsProjects[3].Title', @Convert.ToInt32(@Model.TrendsProjects[3].TotalFundings)],
+            ['@Model.TrendsProjects[4].Title', @Convert.ToInt32(@Model.TrendsProjects[4].TotalFundings)]
+        ]);
+
+        // Optional; add a title and set the width and height of the chart
+        var options = { 'title': 'Trends', 'width': 400, 'height': 300 };
+
+        // Display the chart inside the <div> element with id="piechart"
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+    }
+</script>
+
+
+<div id="columnchart_values"></div>
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load("current", { packages: ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ["Title", "TotalFundings", { role: "style" }],
+            ["@Model.MyTop5[0].Title", @Convert.ToInt32(@Model.MyTop5[0].TotalFundings), "#1b6ec2"],
+            ["@Model.MyTop5[1].Title", @Convert.ToInt32(@Model.MyTop5[1].TotalFundings), "#1b6ec2"],
+            ["@Model.MyTop5[2].Title", @Convert.ToInt32(@Model.MyTop5[2].TotalFundings), "#1b6ec2"],
+            ["@Model.MyTop5[3].Title", @Convert.ToInt32(@Model.MyTop5[3].TotalFundings), "#1b6ec2"],
+            ["@Model.MyTop5[4].Title", @Convert.ToInt32(@Model.MyTop5[4].TotalFundings), "#1b6ec2"]
+           
+        ]);
+
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+            {
+                calc: "stringify",
+                sourceColumn: 1,
+                type: "string",
+                role: "annotation"
+            },
+            2]);
+
+        var options = {
+            title: "My top 5",
+            width: 400,
+            height: 300,
+            bar: { groupWidth: "95%" },
+            legend: { position: "none" },
+        };
+        var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+        chart.draw(view, options);
+    }
+</script>
+<div id="columnchart_values" style="width: 900px; height: 300px;"></div>

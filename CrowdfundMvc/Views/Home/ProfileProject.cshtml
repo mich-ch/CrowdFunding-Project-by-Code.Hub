@@ -17,7 +17,7 @@
             <div class="col-sm-3">
                 <img width="150" height="160" src="https://upload.wikimedia.org/wikipedia/sco/thumb/0/0c/Liverpool_FC.svg/370px-Liverpool_FC.svg.png" alt="File:Liverpool FC.svg" />
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <h6 class="card-title">StatusUpdate: @Model.StatusUpdate</h6>
                 <h6 class="card-title">TotalFundings: @Model.TotalFundings</h6>
                 <h6 class="card-title">Goal: @Model.Goal</h6>
@@ -25,10 +25,15 @@
                 <a href="#" class="btn btn-primary" onclick="editProject(@Model.ProjectId, @Model.ProjectCreator.Id)">Edit</a>
                 <a href="#" class="btn btn-primary" onclick="addpackage(@Model.ProjectId, @Model.ProjectCreator.Id)">Add Package</a>
             </div>
-            <div class="col-sm-5">
+            <div class="col-sm-3">
                 <h6 class="card-title">Description</h6>
                 <p>@Model.Description</p>
-                
+
+            </div>
+            <div class="col-sm-3">
+                <div id="columnchart_values"></div>
+
+
             </div>
         </div>
     </div>
@@ -56,14 +61,51 @@
                 }
             }
         </table>
-        </div>
     </div>
+</div>
 
 
 
 
 
+<div id="columnchart_values"></div>
 
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load("current", { packages: ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ["Title", "TotalFundings", { role: "style" }],
+            ["TotalFundings", @Convert.ToInt32(@Model.TotalFundings), "ff0000"],
+            ["Goal", @Convert.ToInt32(@Model.Goal), "#1b6ec2"]
+           
+
+        ]);
+
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+            {
+                calc: "stringify",
+                sourceColumn: 1,
+                type: "string",
+                role: "annotation"
+            },
+            2]);
+
+        var options = {
+            title: "Remaining amount",
+            width: 400,
+            height: 300,
+            bar: { groupWidth: "95%" },
+            legend: { position: "none" },
+        };
+        var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+        chart.draw(view, options);
+    }
+</script>
+<div id="columnchart_values" style="width: 900px; height: 300px;"></div>
 
 
 
