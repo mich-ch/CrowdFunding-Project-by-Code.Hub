@@ -1,5 +1,5 @@
 ﻿function submitProjectCreatorToServer(projectcreatorid) {
- 
+
     actionMethod = "POST"
     actionUrl = "/apiprojectcreator/addprojectcreator"
     sendData = {
@@ -15,10 +15,8 @@
         data: JSON.stringify(sendData),
         contentType: 'application/json',
         processData: false,
-        success: function (data, textStatus, jQxhr) {
-            $('#responseDiv').html(JSON.stringify(data));
+        success: function (data) {
             if (data == null) {
-                $('#responseDiv').html("There is no such backer");
             }
             else {
                 projectCreatorid = data["id"]
@@ -26,14 +24,13 @@
                 Address = data["Address"]
                 Email = data["Email"]
                 Phone = data["Phone"]
-                alert('You have successfully login')
                 window.open("/Home/ProfileProjectCreator?projectCreatorid=" + projectCreatorid, "_self")
 
             }
 
-           
+
         },
-        error: function (jqXhr, textStatus, errorThrown) {
+        error: function (errorThrown) {
             console.log(errorThrown);
         }
     });
@@ -44,21 +41,13 @@ function GoHome() {
 }
 
 function editProject(projectId, projectreatorid) {
-    
-    alert(projectId);
-    alert(projectreatorid);
     window.open("/Home/EditProject?projectId=" + projectId + "&projectCreatorId=" + projectreatorid, "_self")
 
 }
 
 function ProfileProjectBacker(projectId, backerid) {
 
-    alert(projectId);
-    
-    alert(backerid);
-
-
-    window.open("/Home/ProfileProjectBacker?projectId=" + projectId  + "&backerId=" + backerid, "_self")
+    window.open("/Home/ProfileProjectBacker?projectId=" + projectId + "&backerId=" + backerid, "_self")
 
 }
 
@@ -67,7 +56,7 @@ function myFunction(backerId) {
     window.open("/Home/ProjectsByCategory?projectCat=" + x + "&backerId=" + backerId, "_self");
 }
 
-function search( backerId) {
+function search(backerId) {
     var x = document.getElementById("srch").value;
     window.open("/Home/SearchProject?projectTitle=" + x + "&backerId=" + backerId, "_self");
 }
@@ -103,12 +92,11 @@ function doUpdateProject(projectId, projectreatorid) {
 
         contentType: 'application/json',
         processData: false,
-        success: function (data, textStatus, jQxhr) {
-            $('#responseDiv').html("The update has been made successfully");
+        success: function (data) {
             window.open("/Home/ProfileProject?ProjectId=" + projectId + "&projectCreatorId=" + projectreatorid, "_self")
 
         },
-        error: function (jqXhr, textStatus, errorThrown) {
+        error: function (errorThrown) {
             console.log(errorThrown);
         }
     });
@@ -118,58 +106,16 @@ function doUpdateProject(projectId, projectreatorid) {
 
 
 function fund(fundId, backerId, projectId) {
-    
+
     actionMethod = "POST"
     actionUrl = "/apibacker/addbackerfundingpackage"
-    //   
-   
 
     sendData = {
         "FundingPackageId": fundId,
         "BackerId": backerId,
         "ProjectId": projectId
-       
-    }
- 
-
-    alert(JSON.stringify(sendData))
-    //window.open("/Home/ProfileBacker?backerId=" + backerId, "_self")
-
-    $.ajax({    //EDW DEN MPAINEI STH SUCCESS
-        url: actionUrl,
-        dataType: 'json',
-        type: actionMethod,
-        data: JSON.stringify(sendData),
-        contentType: 'application/json',
-        processData: false,
-        success: function (data, textStatus, jQxhr) {
-            $('#responseDiv').html(JSON.stringify(data));
-
-            alert('You have successfully add fund')
-            window.open("/Home/ProfileBacker?backerId=" + backerId, "_self")
-        },
-        error: function (jqXhr, textStatus, errorThrown) {
-            console.log(errorThrown);
-        }
-    });
-}
-
-
-function createpackage(ProjectId, ProjectCreatorId) {
-
-
-    actionMethod = "POST"
-    actionUrl = "/apiprojectcreator/addpackage"
-      
-
-    sendData = {
-        "Price": parseFloat($('#Price').val()),
-        "ProjectId": ProjectId,
-        "Reward": $('#Reward').val()
-        
     }
 
-    alert(JSON.stringify(sendData))
     $.ajax({
         url: actionUrl,
         dataType: 'json',
@@ -177,15 +123,40 @@ function createpackage(ProjectId, ProjectCreatorId) {
         data: JSON.stringify(sendData),
         contentType: 'application/json',
         processData: false,
-        success: function (data, textStatus, jQxhr) {
-            $('#responseDiv').html(JSON.stringify(data));
-
-            alert('You have successfully add package')
-            window.open("/Home/ProfileProject?ProjectId=" + ProjectId + "&projectCreatorId=" + ProjectCreatorId, "_self")
-         
-
+        success: function () {
+            window.open("/Home/ProfileBacker?backerId=" + backerId, "_self")
         },
-        error: function (jqXhr, textStatus, errorThrown) {
+        error: function (errorThrown) {
+            console.log(errorThrown);
+        }
+    });
+}
+
+function createpackage(ProjectId, ProjectCreatorId) {
+
+
+    actionMethod = "POST"
+    actionUrl = "/apiprojectcreator/addpackage"
+
+
+    sendData = {
+        "Price": parseFloat($('#Price').val()),
+        "ProjectId": ProjectId,
+        "Reward": $('#Reward').val()
+
+    }
+
+    $.ajax({
+        url: actionUrl,
+        dataType: 'json',
+        type: actionMethod,
+        data: JSON.stringify(sendData),
+        contentType: 'application/json',
+        processData: false,
+        success: function () {
+            window.open("/Home/ProfileProject?ProjectId=" + ProjectId + "&projectCreatorId=" + ProjectCreatorId, "_self")
+        },
+        error: function (errorThrown) {
             console.log(errorThrown);
         }
     });
@@ -196,7 +167,6 @@ function createProject(projectcreatorid) {
 
     actionMethod = "POST"
     actionUrl = "/apiprojectcreator/AddProject"
-    //   
 
     sendData = {
         "Category": $('#Category').val(),
@@ -207,7 +177,6 @@ function createProject(projectcreatorid) {
         "Goal": parseFloat($('#Goal').val())
     }
 
-    alert(JSON.stringify(sendData))
     $.ajax({
         url: actionUrl,
         dataType: 'json',
@@ -215,20 +184,16 @@ function createProject(projectcreatorid) {
         data: JSON.stringify(sendData),
         contentType: 'application/json',
         processData: false,
-        success: function (data, textStatus, jQxhr) {
-            $('#responseDiv').html(JSON.stringify(data));
-
-            alert('You have successfully add project')
+        success: function () {
             window.open("/Home/ProfileProjectCreator?projectcreatorid=" + projectcreatorid, "_self")
         },
-        error: function (jqXhr, textStatus, errorThrown) {
+        error: function (errorThrown) {
             console.log(errorThrown);
         }
     });
 }
 
-function ProfileToAddProject(projCreatorId)
-{
+function ProfileToAddProject(projCreatorId) {
     window.open("/Home/AddProject?projCreatorId=" + projCreatorId, "_self");
 }
 
@@ -236,8 +201,7 @@ function ProjectCreator() {
     window.open("/Home/ProjectCreator", "_self");
 }
 
-function ContractStelios()
-{
+function ContractStelios() {
     window.open("https://www.linkedin.com/in/chatzikechagias/");
 }
 
@@ -271,9 +235,6 @@ function LoginBacker() {
 
 
 function ShowFundingPackages(backerId, projectId) {
-    alert(backerId);
-    alert(projectId);
-    
     window.open("/Home/Fund?projectId=" + projectId + "&backerId=" + backerId, "_self");
 }
 
@@ -283,21 +244,13 @@ function ShowAlProjects(backerId) {
 
 function addpackage(ProjectId, ProjectCreatorId) {
     window.open("/Home/AddFundingPackage?ProjectId=" + ProjectId + "&projectCreatorId=" + ProjectCreatorId, "_self");
-    
-
 }
 
 function ProfileProject(projectId, projectCreatorId) {
-    //edw
-    
-    //window.open("/Home/ProfileProject?projectCreatorId=" + projectId, "_self");
     window.open("/Home/ProfileProject?projectId=" + projectId + "&projectCreatorId=" + projectCreatorId, "_self");
-
-    
 }
 
-function ProfileToShowTrendingProject(backerId)
-{
+function ProfileToShowTrendingProject(backerId) {
     window.open("/Home/TrendsProjects?backerId=" + backerId, "_self");
 }
 
@@ -318,9 +271,8 @@ $('#loginButton').click(
 
             contentType: 'application/json',
             processData: false,
-            success: function (data, textStatus, jQxhr) {
+            success: function (data) {
                 if (data == null) {
-                    $('#responseDiv').html("There is no such Project Creator");
                 }
                 else {
                     projectCreatorid = data["id"]
@@ -328,13 +280,12 @@ $('#loginButton').click(
                     Address = data["Address"]
                     Email = data["Email"]
                     Phone = data["Phone"]
-                    alert('You have successfully login')
-                    window.open("/Home/ProfileProjectCreator?projectCreatorid=" + projectCreatorid , "_self")
-                      
+                    window.open("/Home/ProfileProjectCreator?projectCreatorid=" + projectCreatorid, "_self")
+
                 }
 
             },
-            error: function (jqXhr, textStatus, errorThrown) {
+            error: function (errorThrown) {
                 console.log(errorThrown);
             }
         });
@@ -361,9 +312,8 @@ $('#loginBackerButton').click(
 
             contentType: 'application/json',
             processData: false,
-            success: function (data, textStatus, jQxhr) {
+            success: function (data) {
                 if (data == null) {
-                    $('#responseDiv').html("There is no such backer");
                 }
                 else {
                     backerid = data["id"]
@@ -371,13 +321,11 @@ $('#loginBackerButton').click(
                     Address = data["Address"]
                     Email = data["Email"]
                     Phone = data["Phone"]
-                    alert('You have successfully login')
                     window.open("/Home/ProfileBacker?backerid=" + backerid, "_self")
-
                 }
 
             },
-            error: function (jqXhr, textStatus, errorThrown) {
+            error: function (errorThrown) {
                 console.log(errorThrown);
             }
         });
@@ -409,25 +357,22 @@ function submitProjectToServer(projectcreatorid) {
         data: JSON.stringify(sendData),
         contentType: 'application/json',
         processData: false,
-        success: function (data, textStatus, jQxhr) {
+        success: function (data) {
             $('#responseDiv').html(JSON.stringify(data));
             $('#Title').val("");
             $('#Description').val("")
             $('#StatusUpdate').val("")
             $('#Goal').val("")
             $('#Category').val("")
-           // projectcreatorid = data["id"]
-            alert('You have successfully add project')
-            //window.open("/Home/AddProject?projectcreatorid=" + projectcreatorid, "_self")
         },
-        error: function (jqXhr, textStatus, errorThrown) {
+        error: function (errorThrown) {
             console.log(errorThrown);
         }
     });
 }
 
 function submitBackerToServer() {
- 
+
     actionMethod = "POST"
     actionUrl = "/apibacker/addbacker"
     sendData = {
@@ -443,10 +388,8 @@ function submitBackerToServer() {
         data: JSON.stringify(sendData),
         contentType: 'application/json',
         processData: false,
-        success: function (data, textStatus, jQxhr) {
-            $('#responseDiv').html(JSON.stringify(data));
+        success: function (data) {
             if (data == null) {
-                $('#responseDiv').html("There is no such backer");
             }
             else {
                 backerid = data["id"]
@@ -454,11 +397,10 @@ function submitBackerToServer() {
                 Address = data["Address"]
                 Email = data["Email"]
                 Phone = data["Phone"]
-                alert('You have successfully register')
                 window.open("/Home/ProfileBacker?backerid=" + backerid, "_self")
             }
         },
-        error: function (jqXhr, textStatus, errorThrown) {
+        error: function (errorThrown) {
             console.log(errorThrown);
         }
 
@@ -467,39 +409,3 @@ function submitBackerToServer() {
 
     });
 }
-
-
-
-//function addProject() {
-//    elementid = this.idsearc
-//    projectCreatorId = this.value
-//    //basketId = $("#productsList").value
-//    actionMethod = "POST"
-//    actionUrl = "/apiprojectcreator/addproject"
-//    sendData = {
-//        "projectCreatorId": projectCreatorId,
-//        //basketId": basketId
-//    }
-//    alert(JSON.stringify(sendData))
-//    $.ajax({
-//        url: actionUrl,
-//        dataType: 'json',
-//        type: actionMethod,
-//        data: JSON.stringify(sendData),
-//        contentType: 'application/json',
-//        processData: false,
-//        success: function (data, textStatus, jQxhr) {
-//            //productName = data["name"] 
-//            $('#MyBasket').append('<li><button href="#">' + productName + '</button></li>');
-//            contr = '#' + elementid
-//            $(contr).off('click');
-//            $(contr).click(function () {
-//                alert("cannot buy")
-//            });
-//            //     .attr("disabled", "disabled");
-//        },
-//        error: function (jqXhr, textStatus, errorThrown) {
-//            console.log(errorThrown);
-//        }
-//    });
-//}

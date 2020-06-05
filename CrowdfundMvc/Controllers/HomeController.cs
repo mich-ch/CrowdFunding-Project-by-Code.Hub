@@ -128,14 +128,16 @@ namespace CrowdfundMvc.Controllers
             List<FundingPackage> fundingsPackage = projectCreatorManager.ShowFundingPackageByProjectId(projectId);
             //ProjectCreator projCreator = db.ProjectCreators.Find(projectCreatorId);
             Project project = projectManager.FindProjectById(projectId);
+            Project proj = projectManager.FindCreatorbyProject(projectId);
 
             //Project project = db.Projects.Find(projectId);
             ProjectModel pr = new ProjectModel
             {
+                Project = project,
                 BackerId = backerId,
                 FundingPackages = fundingsPackage,
                 ProjectId = projectId,
-               // ProjectCreator = projCreator,    
+                ProjectCreator = proj.ProjectCreator,    
                 Title = project.Title,
                 Description = project.Description,
                 StatusUpdate = project.StatusUpdate,
@@ -180,7 +182,8 @@ namespace CrowdfundMvc.Controllers
                 FullName = backer.FullName,
                 Address = backer.Address,
                 Phone = backer.Phone,
-                Email = backer.Email
+                Email = backer.Email,
+                Projects = backermanager.ShowTrendsProjects()
             };
 
             return View(ba);

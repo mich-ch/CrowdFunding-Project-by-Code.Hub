@@ -3,23 +3,46 @@
 }
 
 
-<h1 align="center" style="padding-top: 100px;
-    margin-top: auto;">Login Backer</h1>
+<style>
+   
+    .footer {
+        background: #1b6ec2;
+        color: white;
+    }
+</style>
 
-<form id="LoginBacker" style="
+    <h1 align="center" style="     padding-top: 100px;
+        font-family: 'Permanent Marker', cursive;
+        color: #1b6ec2;
+        margin-top: auto;
+    
+    ">
+        Login Backer
+    </h1>
+
+
+
+<div class="row">
+    <div class="col"></div>
+    <div class="col">
+        <form id="LoginBacker" style="
     padding-top: 40px;">
-    <div class="form-group row">
-        <label for="Email" class="col-sm-2 col-form-label">Email</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="Email" placeholder="Email">
-        </div>
+            <div class="form-group row">
+                <label for="Email" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="Email" placeholder="Email">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <input class="btn btn-primary" type="button" id="loginBackerButton" value="Submit">
+                </div>
+            </div>
+        </form>
     </div>
-    <div class="form-group row">
-        <div class="col-sm-10">
-            <input class="btn btn-primary" type="button" id="loginBackerButton" value="Submit">
-        </div>
-    </div>
-</form>
 
+    
+    <div class="col"></div>
+</div>
 
 <div id="responseDiv">   </div>

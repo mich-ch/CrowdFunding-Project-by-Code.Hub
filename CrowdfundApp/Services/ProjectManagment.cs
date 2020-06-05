@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using CrowdfundApp.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CrowdfundApp.Services
 {
@@ -35,6 +36,12 @@ namespace CrowdfundApp.Services
             db.Projects.Add(project);
             db.SaveChanges();
             return project;
+        }
+
+        public Project FindCreatorbyProject(int projectid)
+        {
+            return db.Projects.Include(proj => proj.ProjectCreator)
+                .Where(proj => proj.Id == projectid).FirstOrDefault();
         }
 
         public Project Update(ProjectOption projOption, int projectId)

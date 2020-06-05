@@ -35,26 +35,29 @@
 </div>
 
 
-<div class="col-sm-12">
-    <table class="table table-hover">
-        <tr>
-            <th>Reward</th>
-            <th>Price </th>
-           
-        </tr>
-        @{
-            //razor syntax
-            foreach (var fundPack in Model.FundingPackages)
-            {
-                <tr id="cusTable@(fundPack.Id)">
-                    <td> @fundPack.Reward </td>
-                    <td> @fundPack.Price</td>
-                   
-                </tr>
+<div class="col-sm-12" style="padding-top: 25px;">
+    <div class="card">
+
+        <table class="table table-hover">
+            <tr>
+                <th>Reward</th>
+                <th>Price </th>
+
+            </tr>
+            @{
+                //razor syntax
+                foreach (var fundPack in Model.FundingPackages)
+                {
+                    <tr id="cusTable@(fundPack.Id)">
+                        <td> @fundPack.Reward </td>
+                        <td> @fundPack.Price</td>
+
+                    </tr>
+                }
             }
-        }
-    </table>
-</div>
+        </table>
+        </div>
+    </div>
 
 
 

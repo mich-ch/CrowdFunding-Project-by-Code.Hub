@@ -4,57 +4,64 @@
 }
 
 
-<h1 align="center" style="padding-top: 100px;
-    margin-top: auto;"> Add Project </h1>
+<h1 align="center" style="        padding-top: 100px;
+        margin-top: auto;
+        font-family: 'Permanent Marker', cursive;
+        color: #1b6ec2;"> Add Project </h1>
 
 
-
-<form action="submitProjectCreatorToServer()" style="
+<div class="row">
+    <div class="col"></div>
+    <div class="col">
+        <form action="submitProjectCreatorToServer()" style="
     padding-top: 40px;">
-    <div class="form-group row">
-        <label for="Title" class="col-sm-2 col-form-label">Title</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="Title" placeholder="Title">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="Description" class="col-sm-2 col-form-label">Description</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="Description" placeholder="Description">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="Goal" class="col-sm-2 col-form-label">Goal</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="Goal" placeholder="Goal">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="StatusUpdate" class="col-sm-2 col-form-label">StatusUpdate</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="StatusUpdate" placeholder="StatusUpdate">
-
-        </div>
-    </div>
-        <div class="form-group row">
-            <label for="Category" class="col-sm-2 col-form-label">Category</label>
-            <div class="col-sm-10">
-                <select id="Category" name="Category">
-                    <option value="Sports">Sports</option>
-                    <option value="Fashion">Fashion</option>
-                    <option value="Education">Education</option>
-                    <option value="IT">IT</option>
-                    <option value="Other">Other</option>
-                </select>
+            <div class="form-group row">
+                <label for="Title" class="col-sm-2 col-form-label">Title</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="Title" placeholder="Title">
+                </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-sm-10">
-                <input class="btn btn-primary" type="button" onclick="createProject(@Model.ProjectCreatorId)" value="Submit">
+            <div class="form-group row">
+                <label for="Description" class="col-sm-2 col-form-label">Description</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="Description" placeholder="Description">
+                </div>
             </div>
-        </div>
-</form>
+            <div class="form-group row">
+                <label for="Goal" class="col-sm-2 col-form-label">Goal</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="Goal" placeholder="Goal">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="StatusUpdate" class="col-sm-2 col-form-label">StatusUpdate</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="StatusUpdate" placeholder="StatusUpdate">
 
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Category" class="col-sm-2 col-form-label">Category</label>
+                <div class="col-sm-10">
+                    <select id="Category" name="Category">
+                        <option value="Sports">Sports</option>
+                        <option value="Fashion">Fashion</option>
+                        <option value="Education">Education</option>
+                        <option value="IT">IT</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <input class="btn btn-primary" type="button" onclick="createProject(@Model.ProjectCreatorId)" value="Submit">
+                </div>
+            </div>
+        </form>
+    </div>
+   
+    <div class="col"></div>
+</div>
 
 
 

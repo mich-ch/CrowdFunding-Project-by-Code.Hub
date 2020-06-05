@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body>
+<body style='margin-top:0;margin-left:0;margin-right:0;'>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">FundSky</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="/Images/logo_SkyFund.png" style="width: 89px; height: 75px;" /></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -34,7 +34,7 @@
             </div>
         </nav>
     </header>
-    <div class="container-fluid body-content">
+    <div style='margin-top:0;margin-left:0;margin-right:0;' class="container-fluid body-content">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>

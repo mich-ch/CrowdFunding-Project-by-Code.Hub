@@ -13,5 +13,6 @@ namespace CrowdfundApp.Services
         List<FundingPackage> ShowFundingPackages(int projectId);
         Project FindProjectById(int projectId);
         Project Update(ProjectOption projOption, int projectId);
+        Project FindCreatorbyProject(int projectid);
     }
 }

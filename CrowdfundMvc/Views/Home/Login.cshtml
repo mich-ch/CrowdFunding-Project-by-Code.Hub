@@ -3,24 +3,34 @@
 }
 
 
-<h1 align="center" style="padding-top: 100px;
-    margin-top: auto;">Login Project Creator</h1>
+<h1 align="center" style="        padding-top: 100px;
+        margin-top: auto;
+        font-family: 'Permanent Marker', cursive;
+        color: #1b6ec2;
+">Login Project Creator</h1>
 
-
-<form id="Login" style="
+<div class="row">
+    <div class="col"></div>
+    <div class="col">
+        <form id="Login" style="
     padding-top: 40px;">
-    <div class="form-group row">
-        <label for="Email" class="col-sm-2 col-form-label">Email</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="Email" placeholder="Email">
-        </div>
+            <div class="form-group row">
+                <label for="Email" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="Email" placeholder="Email">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <input class="btn btn-primary" type="button" id="loginButton" value="Submit">
+                </div>
+            </div>
+        </form>
     </div>
-    <div class="form-group row">
-        <div class="col-sm-10">
-            <input class="btn btn-primary" type="button" id="loginButton" value="Submit">
-        </div>
-    </div>
-</form>
 
+    
+    <div class="col"></div>
+
+</div>
 
 <div id="responseDiv">   </div>
