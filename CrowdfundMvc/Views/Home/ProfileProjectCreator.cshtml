@@ -51,6 +51,7 @@
       
         <div class="col">
             <div class="card">
+                <h5 class="card-title" style="font-family: 'Permanent Marker', cursive; color: #1b6ec2; text-align: center; font-size: 35px;">My Projects</h5>
                 <table id="myTable" class="table table-hover">
                     <tr>
 
@@ -112,7 +113,8 @@
         ]);
 
         // Optional; add a title and set the width and height of the chart
-        var options = { 'title': 'Trends', 'width': 400, 'height': 300 };
+        var options = {
+            'title': 'Percentage comparison of top 5 projects', 'width': 400, 'height': 300 };
 
         // Display the chart inside the <div> element with id="piechart"
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));

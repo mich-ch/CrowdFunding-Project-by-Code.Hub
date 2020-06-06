@@ -168,21 +168,24 @@ function createProject(projectcreatorid) {
     actionMethod = "POST"
     actionUrl = "/apiprojectcreator/AddProject"
 
-    sendData = {
-        "Category": $('#Category').val(),
-        "ProjectCreatorId": projectcreatorid,
-        "Title": $('#Title').val(),
-        "Description": $('#Description').val(),
-        "StatusUpdate": $('#StatusUpdate').val(),
-        "Goal": parseFloat($('#Goal').val())
+    var formData = new FormData();
+    for (var i = 0; i < $('#picture').length; i++) {
+        formData.append("picture", $('#picture')[0].files[i]);
     }
+    formData.append("Category", $('#Category').val());
+    formData.append("ProjectCreatorId", projectcreatorid);
+    formData.append("Title", $('#Title').val());
+    formData.append("Description", $('#Description').val());
+    formData.append("StatusUpdate", $('#StatusUpdate').val());
+    formData.append("Goal", parseFloat($('#Goal').val()));
+    formData.append("ImageDescription", $('#ImageDescription').val());
 
     $.ajax({
         url: actionUrl,
         dataType: 'json',
         type: actionMethod,
-        data: JSON.stringify(sendData),
-        contentType: 'application/json',
+        data: formData,
+        contentType: false,
         processData: false,
         success: function () {
             window.open("/Home/ProfileProjectCreator?projectcreatorid=" + projectcreatorid, "_self")

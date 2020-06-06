@@ -23,7 +23,7 @@ namespace CrowdfundMvc.Models
         public int ProjectCreatorId { get; set; }
         public bool Active { get; set; }
 
-        
+        public string PicturePath { get; set; }
         public Backer Backer { get; set; }
         public Project Project { get; set; }
         

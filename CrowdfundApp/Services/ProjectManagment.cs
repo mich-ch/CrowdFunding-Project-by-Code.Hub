@@ -24,6 +24,7 @@ namespace CrowdfundApp.Services
 
             Project project = new Project
             {
+                 PicturePath = projectOption.PicturePath,
                 ProjectCreator = creatorMng.FindProjectCreator(projectOption.ProjectCreatorId),
                 Title = projectOption.Title,
                 Description = projectOption.Description,

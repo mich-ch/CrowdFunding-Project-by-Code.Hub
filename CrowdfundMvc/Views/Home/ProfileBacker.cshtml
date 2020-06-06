@@ -51,6 +51,7 @@
     <div class="col-sm-9" style="margin-left: 70px">
 
         <div class="card">
+            <h5 class="card-title" style="font-family: 'Permanent Marker', cursive; color: #1b6ec2; text-align: center; font-size: 35px;">My Rewards</h5>
             <table class="table">
                 <thead class="thead-light">
 
@@ -81,40 +82,7 @@
         </div>
 
 
-        <div class="card" style="padding-top: 25px;">
-            <table class="table">
-                <thead class="thead-light">
-
-                    <tr>
-                        <th scope="col">Title</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">StatusUpdate </th>
-                        <th scope="col">TotalFundings </th>
-                        <th scope="col">Goal </th>
-                        <th scope="col">Category </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @{
-                       
-                        //razor syntax
-                        foreach (var project in Model.Projects)
-                        {
-                            <tr href="#" onclick="ProfileProjectBacker(@project.Id, @Model.BackerId)" class='clickable-row' id="cusTable@(project.Id)">
-                                
-                                <td>@project.Title </td>
-                                <td>@project.Description</td>
-                                <td>@project.StatusUpdate</td>
-                                <td>@project.TotalFundings</td>
-                                <td>@project.Goal</td>
-                                <td>@project.Category</td>
-                            </tr>
-                           
-                        }
-                    }
-                </tbody>
-            </table>
-        </div>
+        
 
     </div>
 

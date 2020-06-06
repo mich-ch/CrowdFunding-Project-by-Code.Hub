@@ -54,6 +54,12 @@ namespace CrowdfundMvc.Controllers
             return View();
         }
 
+        [HttpGet("AboutUs")]
+        public IActionResult AboutUs()
+        {
+            return View();
+        }
+
         [HttpGet("Privacy")]
         public IActionResult Privacy()
         {
@@ -130,6 +136,7 @@ namespace CrowdfundMvc.Controllers
             //Project project = db.Projects.Find(projectId);
             ProjectModel pr = new ProjectModel
             {
+                 PicturePath = project.PicturePath,
                  FundingPackages = fundingsPackage,
                 ProjectId = projectId,
                 ProjectCreator = projCreator,    //  se 2o xrono tha to doume
@@ -156,6 +163,7 @@ namespace CrowdfundMvc.Controllers
             //Project project = db.Projects.Find(projectId);
             ProjectModel pr = new ProjectModel
             {
+                 PicturePath = project.PicturePath,
                 Project = project,
                 BackerId = backerId,
                 FundingPackages = fundingsPackage,

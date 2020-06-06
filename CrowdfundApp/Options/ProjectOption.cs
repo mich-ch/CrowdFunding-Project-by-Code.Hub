@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -15,5 +16,7 @@ namespace CrowdfundApp.Options
         public decimal? Goal { get; set; }
         public string Category { get; set; }
         public bool Active { get; set; }
+        public IFormFile Picture { set; get; }
+        public string PicturePath { get; set; }
     }
 }
