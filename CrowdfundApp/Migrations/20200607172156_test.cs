@@ -51,7 +51,8 @@ namespace CrowdfundApp.Migrations
                     TotalFundings = table.Column<decimal>(nullable: false),
                     Goal = table.Column<decimal>(nullable: false),
                     Category = table.Column<string>(nullable: true),
-                    Active = table.Column<bool>(nullable: false)
+                    Active = table.Column<bool>(nullable: false),
+                    PicturePath = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

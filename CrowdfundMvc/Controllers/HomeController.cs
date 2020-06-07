@@ -101,7 +101,7 @@ namespace CrowdfundMvc.Controllers
             if (projTrends.Count < 5)
             {
                 for (int i = 0; i < 5; i++)
-                    Mytop.Add(projectt);
+                    projTrends.Add(projectt);
             }
             //1h periptwsi oxi null kai 3
             if (Mytop.Count <5)
