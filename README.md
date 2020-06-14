@@ -21,4 +21,11 @@ Installation
 * Visual Studio Community Edition
 * SQL Server Management Studio
 
+Usage
+============
+1. Tools
+2. Nuget Package Manager
+3. Package Manager Console
+
+
 
