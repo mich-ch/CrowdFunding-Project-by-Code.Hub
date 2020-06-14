@@ -26,6 +26,10 @@ Usage
 1. Tools
 2. Nuget Package Manager
 3. Package Manager Console
+```
+add-migration test
+update-database
+```
 
 
 
