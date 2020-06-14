@@ -16,3 +16,9 @@ Requirements
 * 4 Core CPU
 * Windows 10
 
+Installation
+============
+* Visual Studio Community Edition
+* SQL Server Management Studio
+
+
