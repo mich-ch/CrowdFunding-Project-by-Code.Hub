@@ -9,6 +9,14 @@ Description
 ============
 The task at hand is to create a crowdfunding platform (likeKickStarter or Indiegogo) for the Web where one the Project Creator, could share their wildest idea and others the Backers, could contribute financially to see it happening.
 
+Tools
+============
+* C#
+* Javascript, HTML, CSS
+* ASP.NET Core, ASP.NET.Mvc
+* EntityFramework
+* MS SQL Server, Visual Studio
+
 Requirements
 ============
 * 8 GB RAM
